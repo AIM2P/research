@@ -1,0 +1,13 @@
+# Local working files, never published
+_local/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS / editors
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+~$*

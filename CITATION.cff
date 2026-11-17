@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you refer to this research program, please cite it as below."
+title: "AIM²P: Research Program for Certified AI Reasoning in Mathematics and Mathematical Physics (Phase 0)"
+abstract: >-
+  Scientific foundations of AIM²P (African AI for Mathematics & Mathematical Physics):
+  research question, state of the art, research gap and 2026–2028 roadmap for a
+  neuro-symbolic architecture coupling LLM reasoning, SymPy symbolic computation and
+  Lean 4 formal verification, with compiler-guided self-correction.
+authors:
+  - name: "AIM²P Initiative"
+version: "0.1.0"
+date-released: "2026-11-17"
+license: CC-BY-4.0
+url: "https://github.com/AIM2P"
+repository: "https://github.com/AIM2P/research"
+keywords:
+  - lean4
+  - formal-verification
+  - theorem-proving
+  - neuro-symbolic
+  - large-language-models
+  - sympy
+  - mathematical-physics
+  - krylov-complexity
+  - ai-for-math
