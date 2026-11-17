@@ -27,15 +27,15 @@ export const STATUS: Record<PhaseStatus, Bi> = {
 };
 
 export const PHASES: Phase[] = [
-  { code: 'P0', ch: 'frame', status: 'current',
+  { code: 'P0', ch: 'frame', status: 'done',
     s: { fr: 'Cadrage', en: 'Framing' },
     t: { fr: 'Cadrage scientifique', en: 'Scientific framing' },
     d: { fr: 'Revue de littérature, identification des verrous, publication des documents fondateurs.', en: 'Literature review, identification of the research gap, publication of the founding documents.' } },
-  { code: 'P1', ch: 'found', status: 'next',
+  { code: 'P1', ch: 'found', status: 'current',
     s: { fr: 'Cartographie', en: 'Mapping' },
     t: { fr: 'Cartographie du domaine', en: 'Domain mapping' },
     d: { fr: 'Matrice comparative des LLM, de Lean 4, SymPy, Rocq (ex-Coq) et Isabelle.', en: 'Comparative matrix of LLMs, Lean 4, SymPy, Rocq (formerly Coq) and Isabelle.' } },
-  { code: 'P2', ch: 'found', status: 'planned',
+  { code: 'P2', ch: 'found', status: 'next',
     s: { fr: 'Spéc. benchmark', en: 'Benchmark spec' },
     t: { fr: 'Spécification du benchmark', en: 'Benchmark specification' },
     d: { fr: 'Création du jeu de données initial, niveaux N1 à N5, en mathématiques et en physique.', en: 'Initial dataset, levels N1 to N5, in mathematics and physics.' } },
@@ -54,7 +54,7 @@ export const PHASES: Phase[] = [
   { code: 'P6', ch: 'engine', status: 'planned',
     s: { fr: 'Auto-correction', en: 'Self-correction' },
     t: { fr: 'Boucle d’auto-correction', en: 'Self-correction loop' },
-    d: { fr: 'Recherche arborescente (MCTS) guidée par les erreurs du compilateur Lean.', en: 'Tree search (MCTS) guided by Lean compiler errors.' } },
+    d: { fr: 'Boucle de révision agentique ou recherche arborescente, guidée par les erreurs du compilateur Lean.', en: 'Agentic revision loop or tree search, guided by Lean compiler errors.' } },
   { code: 'P7', ch: 'phys', status: 'planned',
     s: { fr: 'Physique math.', en: 'Math. physics' },
     t: { fr: 'Physique mathématique', en: 'Mathematical physics' },

@@ -22,6 +22,7 @@ const T = (k: StringKey) => t(lang, k);
         <h3 set:html={T('kr.c1.t')} />
         <p set:html={T('kr.c1.d')} />
         <div class="math-block" set:html={tex(String.raw`\partial_t \varphi_n = b_n\,\varphi_{n-1} - b_{n+1}\,\varphi_{n+1}`, true)} />
+        <p class="cite" set:html={T('kr.conv')} />
       </article>
       <article class="kr-card reveal" style="--delay:.08s">
         <span class="kr-n">ii</span>
@@ -33,7 +34,7 @@ const T = (k: StringKey) => t(lang, k);
         <span class="kr-n">iii</span>
         <h3 set:html={T('kr.c3.t')} />
         <p set:html={T('kr.c3.d')} />
-        <div class="math-block" set:html={tex(String.raw`b_n \sim \alpha n \;\Rightarrow\; \lambda_L \le 2\alpha`, true)} />
+        <div class="math-block" set:html={tex(String.raw`\begin{gathered} b_n \sim \alpha n \;\Rightarrow\; K(t) \sim e^{2\alpha t} \\ \lambda_L \le 2\alpha \quad (T = \infty) \end{gathered}`, true)} />
         <p class="cite">Parker, Cao, Avdoshkin, Scaffidi, Altman, <i>Phys. Rev. X</i> 9, 041017 (2019).</p>
       </article>
     </div>

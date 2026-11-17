@@ -1,10 +1,11 @@
 /* Complexité de Krylov : moteur numérique et tracés.
    On intègre  dφₙ/dt = bₙ φₙ₋₁ − bₙ₊₁ φₙ₊₁  (φₙ(0) = δₙ₀, α = 1) par Runge–Kutta 4
    et l'on compare K(t) = Σ n|φₙ|² à la solution exacte de trois familles classiques :
-     SL(2,ℝ)          bₙ = √(n(n−1+η))   →  K = η sinh²t
-     Heisenberg–Weyl  bₙ = √n            →  K = t²
-     SU(2)            bₙ = √(n(2j+1−n))  →  K = 2j sin²t
-   Références : Parker et al., PRX 9, 041017 (2019) ; Caputa, Magán, Patramanis, JHEP (2022). */
+     SL(2,ℝ)          bₙ = √(n(n−1+η))   →  K = η sinh²t ,  C = sech^η t   (η = 2h > 0)
+     Heisenberg–Weyl  bₙ = √n            →  K = t²       ,  C = e^(−t²/2)
+     SU(2)            bₙ = √(n(2j+1−n))  →  K = 2j sin²t ,  C = cos^(2j) t (2j entier)
+   Conventions : b₀ = 0, φₙ(0) = δₙ₀, O(t) = Σ iⁿ φₙ Oₙ, C(t) = φ₀(t), (A|B) = Tr(A†B)/Tr 𝟙.
+   Références : Parker et al., PRX 9, 041017 (2019) ; Caputa, Magán, Patramanis, arXiv:2109.03824. */
 import type { Bi, Lang } from '../i18n';
 
 export type Regime = 'sl2' | 'hw' | 'su2';
@@ -18,6 +19,8 @@ export interface RegimeDef {
   K: (t: number, p: number) => number;
   bnTex: string;
   exTex: string;
+  cTex: string;
+  /** Texte court ; peut contenir du HTML simple (<sub>). */
   note: Bi;
 }
 
@@ -30,8 +33,9 @@ export const REGIMES: Record<Regime, RegimeDef> = {
     K: (t, p) => p * Math.sinh(t) ** 2,
     bnTex: 'b_n = \\alpha\\sqrt{n\\,(n-1+\\eta)}',
     exTex: 'K(t) = \\eta\\,\\sinh^2(\\alpha t)',
-    note: { fr: 'Signature du chaos : la complexité croît exponentiellement, au taux 2α.',
-            en: 'The signature of chaos: complexity grows exponentially, at rate 2α.' },
+    cTex: 'C(t) = \\operatorname{sech}^{\\eta}(\\alpha t)',
+    note: { fr: 'Croissance exponentielle de taux λ<sub>K</sub> = 2α (η = 2h &gt; 0) : le comportement attendu dans les systèmes chaotiques, mais pas une preuve de chaos.',
+            en: 'Exponential growth at rate λ<sub>K</sub> = 2α (η = 2h &gt; 0): the behaviour expected in chaotic systems, but not proof of chaos.' },
   },
   hw: {
     param: null,
@@ -41,6 +45,7 @@ export const REGIMES: Record<Regime, RegimeDef> = {
     K: (t) => t * t,
     bnTex: 'b_n = \\alpha\\sqrt{n}',
     exTex: 'K(t) = \\alpha^2 t^2',
+    cTex: 'C(t) = e^{-\\alpha^2 t^2/2}',
     note: { fr: 'Croissance quadratique : l’opérateur se répand, sans emballement exponentiel.',
             en: 'Quadratic growth: the operator spreads, with no exponential runaway.' },
   },
@@ -52,12 +57,13 @@ export const REGIMES: Record<Regime, RegimeDef> = {
     K: (t, p) => p * Math.sin(t) ** 2,
     bnTex: 'b_n = \\alpha\\sqrt{n\\,(2j+1-n)}',
     exTex: 'K(t) = 2j\\,\\sin^2(\\alpha t)',
-    note: { fr: 'Espace de Krylov fini : la complexité oscille et revient périodiquement à zéro.',
-            en: 'Finite Krylov space: complexity oscillates and periodically returns to zero.' },
+    cTex: 'C(t) = \\cos^{2j}(\\alpha t)',
+    note: { fr: 'Espace de Krylov fini, de dimension 2j + 1 (2j entier) : K(t) oscille entre 0 et 2j, avec une période π/α. Ici α est une fréquence, pas un taux de croissance.',
+            en: 'Finite Krylov space of dimension 2j + 1 (2j an integer): K(t) oscillates between 0 and 2j, with period π/α. Here α is a frequency, not a growth rate.' },
   },
 };
 
-export const KRYLOV_TEX = Object.values(REGIMES).flatMap((r) => [r.bnTex, r.exTex]);
+export const KRYLOV_TEX = Object.values(REGIMES).flatMap((r) => [r.bnTex, r.exTex, r.cTex]);
 
 /* ---------------------------------------------------------------------- */
 /* Simulation                                                            */

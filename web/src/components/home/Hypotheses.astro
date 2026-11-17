@@ -17,14 +17,14 @@ const T = (k: StringKey) => t(lang, k);
       <article class="hyp reveal" style="--accent: var(--gold)">
         <div class="hyp-top"><span class="hyp-code">H1</span><span class="hyp-phase" set:html={T('hyp.h1.p')} /></div>
         <h3 set:html={T('hyp.h1.t')} />
-        <p class="hyp-target"><span class="big">&gt; +40&nbsp;%</span><span set:html={T('hyp.h1.u')} /></p>
+        <p class="hyp-target"><span class="big" set:html={T('hyp.h1.big')} /><span set:html={T('hyp.h1.u')} /></p>
         <p set:html={T('hyp.h1.d')} />
         <p class="hyp-result"><span set:html={T('hyp.res')} /><b set:html={T('hyp.tbd')} /></p>
       </article>
       <article class="hyp reveal" style="--accent: var(--coral); --delay:.08s">
         <div class="hyp-top"><span class="hyp-code">H2</span><span class="hyp-phase" set:html={T('hyp.h2.p')} /></div>
         <h3 set:html={T('hyp.h2.t')} />
-        <p class="hyp-target"><span class="big">k &lt; 5</span><span set:html={T('hyp.h2.u')} /></p>
+        <p class="hyp-target"><span class="big">k &le; 5</span><span set:html={T('hyp.h2.u')} /></p>
         <p set:html={T('hyp.h2.d')} />
         <p class="hyp-result"><span set:html={T('hyp.res')} /><b set:html={T('hyp.tbd')} /></p>
       </article>

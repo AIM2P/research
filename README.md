@@ -4,13 +4,13 @@
 
 <p align="center">
   <a href="LICENSE"><img alt="License: CC BY 4.0" src="https://img.shields.io/badge/license-CC%20BY%204.0-1FB28C"></a>
-  <img alt="Status: Phase 0, scientific framing" src="https://img.shields.io/badge/status-Phase%200%20%C2%B7%20scientific%20framing-F6B73C">
+  <img alt="Status: Phase 1, domain mapping" src="https://img.shields.io/badge/status-Phase%201%20%C2%B7%20domain%20mapping-F6B73C">
   <img alt="Documents in French" src="https://img.shields.io/badge/docs-fran%C3%A7ais-EE5A3E">
 </p>
 
 # AIM²P research program
 
-This repository holds the scientific foundations of **AIM²P** (African AI for Mathematics & Mathematical Physics): the research question, the state of the art, the research gap and the 2026–2028 roadmap.
+This repository holds the scientific foundations of **AIM²P** (African AI for Mathematics & Mathematical Physics): the research question, the state of the art, the research gap, the research proposal and the 2026–2028 roadmap.
 
 **Website:** [aim2p.github.io/research](https://aim2p.github.io/research/), in French and English, with an interactive proof workshop and a Krylov complexity lab.
 
@@ -18,7 +18,7 @@ AIM²P asks whether AI can become a **rigorous, certified and self-correcting re
 
 ```mermaid
 flowchart LR
-    P([Problem]) --> R["Reasoning<br/>LLM + tree search"]
+    P([Problem]) --> R["Reasoning<br/>LLM"]
     R --> S["Symbolic computation<br/>SymPy"]
     S --> L["Formal proof<br/>Lean 4"]
     L -- valid --> C([Certified result])
@@ -42,27 +42,30 @@ The documents are written in French. Each one is available in Markdown (readable
 | 1 | **Research Question** | Central question, sub-questions SQ1–SQ3, hypotheses H1–H3 | [Markdown](docs/01_Research_Question.md) · [PDF](docs/pdf/01_Research_Question.pdf) |
 | 2 | **State of the Art** | LLMs, proof assistants, symbolic solvers, AI for physics, recent systems | [Markdown](docs/02_State_of_the_Art.md) · [PDF](docs/pdf/02_State_of_the_Art.pdf) |
 | 3 | **Research Gap** | The four open problems AIM²P targets | [Markdown](docs/03_Research_Gap.md) · [PDF](docs/pdf/03_Research_Gap.pdf) |
+| 4 | **Research Proposal v0.1** | Pre-registered hypotheses, AMP-Bench-mini, protocol, Krylov case study, timeline, budget | [Markdown](docs/04_Research_Proposal_v0.1.md) · [PDF](docs/pdf/04_Research_Proposal_v0.1.pdf) |
 
 ## Research question
 
-> To what extent can an integrated neuro-symbolic architecture (LLM reasoning, SymPy symbolic computation and Lean 4 formal verification) guarantee rigorous, self-correcting and reproducible proofs in pure mathematics and theoretical physics, while driving the hallucination rate to zero?
+> To what extent does an open neuro-symbolic loop, in which an LLM reasons, SymPy computes and critiques, and Lean 4 certifies, increase the share of correct and fully verified solutions, and reduce the share of unverified success claims, at equal compute budget, compared with the same LLM used alone or filtered by the same verifier, on problems in mathematics and mathematical physics (case study: finite-dimensional operator dynamics and Krylov complexity)?
 
-**Hypotheses we will test:**
+**Hypotheses we will test** on AMP-Bench-mini, a 40-item benchmark frozen together with its grader before any run:
 
-- **H1:** the LLM + SymPy + Lean 4 loop beats a state-of-the-art LLM used alone by more than 40% in accuracy on AMP-Bench, our planned benchmark.
-- **H2:** self-correction guided by Lean compiler errors reaches a certified proof in fewer than 5 iterations for at least 70% of intermediate lemmas.
-- **H3:** formal verification can detect and correct boundary-condition and invariance errors in complex physics derivations, such as operator growth in Krylov space.
+- **H1 (equal-budget gain):** the loop, capped at 5 revision rounds, beats the same LLM used alone in one attempt by at least 20 absolute percentage points of verified success (H1a), and also beats the same LLM given five independent attempts filtered by the same verifier, at comparable token budget (H1b). Both are judged on paired, problem-by-problem differences.
+- **H2 (lemma certification curve):** for intermediate lemmas from a fixed proof plan, at least 70% are certified by the Lean kernel (standard axioms only, statement unchanged) within 5 compile → error → revision iterations. We publish the full success curve, compared with equal-cost resampling and broken down by Lean error type.
+- **H3 (injected physics errors):** on correct mathematical-physics derivations with deliberately injected errors, we compare an LLM judge, step-by-step SymPy checks and Lean 4. Typing should reject dimensional and invariance errors (H3a); proof obligations should expose missing hypotheses, degenerate cases and wrong boundary conditions better than the other two critics (H3b); automatic correction is exploratory (H3c).
+
+The hypotheses are pre-registered before any measurement; their decision criteria are fixed in the Research Proposal.
 
 ## Why mathematical physics
 
-Formal verification has made fast progress on competition mathematics, but theoretical physics remains largely outside certified proof corpora. AIM²P's flagship case study is **Krylov complexity**: deriving the Krylov basis with a symbolic Lanczos algorithm, checking the regularity of the Lanczos coefficients *bₙ* and operator growth, and comparing Krylov-space trajectories with holographic models.
+Formal verification has made fast progress on competition mathematics, but theoretical physics is still a small part of certified proof corpora, and Krylov complexity, the Lanczos recursion and operator growth are absent from the reference libraries (Mathlib, Physlib) as of November 2026. AIM²P's flagship case study is **Krylov complexity**: deriving the Krylov basis with a symbolic Lanczos algorithm, checking the regularity of the Lanczos coefficients *bₙ* and operator growth, and, where both sides have a closed form, comparing Krylov-space trajectories with holographic models.
 
 ## Roadmap at a glance
 
 | Phases | Focus | Status |
 |---|---|---|
-| P0 | Scientific framing: question, state of the art, gap | 🔄 In progress |
-| P1 – P3 | Domain mapping, benchmark specification, baselines | Next |
+| P0 | Scientific framing: question, state of the art, gap, research proposal | ✅ Done |
+| P1 – P3 | Domain mapping, benchmark specification, baselines | 🔄 P1 in progress |
 | P4 – P6 | Reasoning engine, Lean 4 integration, compiler-guided self-correction | Planned |
 | P7 – P8 | Mathematical physics module and AMP-Bench | Planned |
 | P9 – P10 | Publications and open-source ecosystem | Planned |
@@ -104,4 +107,4 @@ The documents in this repository are released under the [Creative Commons Attrib
 
 ### En français
 
-Ce dépôt rassemble les documents fondateurs d'**AIM²P** (African AI for Mathematics & Mathematical Physics) : question de recherche, état de l'art, verrous scientifiques et roadmap 2026–2028. AIM²P étudie si une architecture qui combine un LLM (raisonnement), SymPy (calcul symbolique) et Lean 4 (vérification formelle), avec une boucle d'auto-correction guidée par le compilateur, peut produire des démonstrations rigoureuses et certifiées en mathématiques pures et en physique théorique. Les documents sont en français, dans le dossier [`docs/`](docs/). Retours et contributions bienvenus via les [issues](https://github.com/AIM2P/research/issues).
+Ce dépôt rassemble les documents fondateurs d'**AIM²P** (African AI for Mathematics & Mathematical Physics) : question de recherche, état de l'art, verrous scientifiques et roadmap 2026–2028. AIM²P évalue dans quelle mesure une boucle ouverte, où un LLM raisonne, SymPy calcule et critique, et Lean 4 certifie, augmente à budget de calcul égal la part de solutions correctes et intégralement vérifiées en mathématiques et en physique mathématique (cas d'étude : complexité de Krylov), par rapport au même LLM utilisé seul ou filtré par le même vérificateur. Les documents sont en français, dans le dossier [`docs/`](docs/). Retours et contributions bienvenus via les [issues](https://github.com/AIM2P/research/issues).

@@ -38,7 +38,7 @@ const T = (k: StringKey) => t(lang, k);
       <li class="rung reveal" style="--lvl:5; --delay:.24s">
         <span class="rung-lvl">N5</span>
         <h3 set:html={T('bench.n5.t')} />
-        <div class="math-block" set:html={tex(String.raw`\lambda_L \le 2\alpha`, true)} />
+        <div class="math-block" set:html={tex(String.raw`\lambda_L \le 2\alpha \quad (T = \infty)`, true)} />
       </li>
     </ol>
     <p class="fine-print" set:html={T('bench.note')} />

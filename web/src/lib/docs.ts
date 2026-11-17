@@ -3,7 +3,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { markdownToHtml } from 'satteri';
-import { frSpace, type StringKey } from '../i18n';
+import { docHref, frSpace, type StringKey } from '../i18n';
 
 export interface DocMeta {
   n: string;
@@ -18,6 +18,7 @@ export const DOCS: DocMeta[] = [
   { n: '01', slug: 'research-question', file: '01_Research_Question', titleKey: 'res.d1.t', descKey: 'res.d1.d' },
   { n: '02', slug: 'state-of-the-art', file: '02_State_of_the_Art', titleKey: 'res.d2.t', descKey: 'res.d2.d' },
   { n: '03', slug: 'research-gap', file: '03_Research_Gap', titleKey: 'res.d3.t', descKey: 'res.d3.d' },
+  { n: '04', slug: 'research-proposal', file: '04_Research_Proposal_v0.1', titleKey: 'res.d4.t', descKey: 'res.d4.d' },
 ];
 
 export interface TocItem { id: string; text: string }
@@ -74,6 +75,11 @@ export function renderDoc(doc: DocMeta): RenderedDoc {
   // 5. Tableaux défilants sur mobile, liens externes dans un nouvel onglet.
   html = html.replace(/<table>/g, '<div class="table-wrap"><table>').replace(/<\/table>/g, '</table></div>');
   html = html.replace(/<a href="(https?:[^"]+)">/g, '<a href="$1" target="_blank" rel="noopener">');
+  // Liens entre documents (« 02_State_of_the_Art.md ») : vers la page du site (texte source en français).
+  html = html.replace(/<a href="(?:\.\/)?(\d\d_[^"#]+)\.md(#[^"]*)?">/g, (m, file: string, hash?: string) => {
+    const target = DOCS.find((d) => d.file === file);
+    return target ? `<a href="${docHref('fr', target.slug)}${hash ?? ''}">` : m;
+  });
 
   // 6. Typographie française (hors blocs de code) et périodes « 2026–2028 » insécables.
   const typo = (s: string) => frSpace(s).replace(/(\d{4})–(\d{4})/g, '<span class="nowrap">$1–$2</span>');

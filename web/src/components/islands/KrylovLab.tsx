@@ -174,9 +174,11 @@ export default function KrylovLab({ lang, math }: Props) {
           <div className="lab-formula">
             <p className="lab-label" dangerouslySetInnerHTML={{ __html: t(lang, 'kr.lab.bn') }} />
             <div className="math-block" dangerouslySetInnerHTML={{ __html: math[def.bnTex] ?? def.bnTex }} />
+            <p className="lab-label" dangerouslySetInnerHTML={{ __html: t(lang, 'kr.lab.c') }} />
+            <div className="math-block" dangerouslySetInnerHTML={{ __html: math[def.cTex] ?? def.cTex }} />
             <p className="lab-label" dangerouslySetInnerHTML={{ __html: t(lang, 'kr.lab.exact') }} />
             <div className="math-block" dangerouslySetInnerHTML={{ __html: math[def.exTex] ?? def.exTex }} />
-            <p className="lab-regime-note">{tx(def.note, lang)}</p>
+            <p className="lab-regime-note" dangerouslySetInnerHTML={{ __html: tx(def.note, lang) }} />
           </div>
 
           <div className={'lab-param' + (param ? '' : ' is-hidden')}>
