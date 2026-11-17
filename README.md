@@ -12,6 +12,8 @@
 
 This repository holds the scientific foundations of **AIM²P** (African AI for Mathematics & Mathematical Physics): the research question, the state of the art, the research gap and the 2026–2028 roadmap.
 
+**Website:** [aim2p.github.io/research](https://aim2p.github.io/research/), in French and English, with an interactive proof workshop and a Krylov complexity lab.
+
 AIM²P asks whether AI can become a **rigorous, certified and self-correcting research assistant** for pure mathematics and theoretical physics. The approach couples three engines in one loop, so that no result is accepted before it is checked:
 
 ```mermaid
@@ -78,6 +80,7 @@ Rigor, reproducibility, open science, strict comparison against baselines, autom
 ```text
 docs/        Research documents in Markdown (the source of truth)
 docs/pdf/    PDF exports, rebuilt with tools/build_pdfs.py
+web/         Public website (Astro), built from docs/ and branding/
 branding/    AIM²P logo, banner and the script that generates them
 tools/       Build scripts
 ```

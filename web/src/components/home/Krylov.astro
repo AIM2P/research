@@ -1,0 +1,54 @@
+---
+import { t, type Lang, type StringKey } from '../../i18n';
+import { tex, texMap } from '../../lib/math';
+import { KRYLOV_TEX } from '../../lib/krylov';
+import KrylovLab from '../islands/KrylovLab';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = (k: StringKey) => t(lang, k);
+---
+<!-- Laboratoire Krylov -->
+<section class="section night lab-section" id="krylov">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow eyebrow-light eb-teal" set:html={T('kr.eyebrow')} />
+      <h2 class="h2" set:html={T('kr.title')} />
+      <p class="lead" set:html={T('kr.lead')} />
+    </div>
+
+    <div class="kr-explain">
+      <article class="kr-card reveal">
+        <span class="kr-n">i</span>
+        <h3 set:html={T('kr.c1.t')} />
+        <p set:html={T('kr.c1.d')} />
+        <div class="math-block" set:html={tex(String.raw`\partial_t \varphi_n = b_n\,\varphi_{n-1} - b_{n+1}\,\varphi_{n+1}`, true)} />
+      </article>
+      <article class="kr-card reveal" style="--delay:.08s">
+        <span class="kr-n">ii</span>
+        <h3 set:html={T('kr.c2.t')} />
+        <p set:html={T('kr.c2.d')} />
+        <div class="math-block" set:html={tex(String.raw`K(t) = \sum_{n} n\,|\varphi_n(t)|^2`, true)} />
+      </article>
+      <article class="kr-card reveal" style="--delay:.16s">
+        <span class="kr-n">iii</span>
+        <h3 set:html={T('kr.c3.t')} />
+        <p set:html={T('kr.c3.d')} />
+        <div class="math-block" set:html={tex(String.raw`b_n \sim \alpha n \;\Rightarrow\; \lambda_L \le 2\alpha`, true)} />
+        <p class="cite">Parker, Cao, Avdoshkin, Scaffidi, Altman, <i>Phys. Rev. X</i> 9, 041017 (2019).</p>
+      </article>
+    </div>
+
+    <div class="reveal">
+      <KrylovLab client:visible lang={lang} math={texMap(KRYLOV_TEX)} />
+    </div>
+
+    <div class="kr-goals">
+      <h3 class="h3 reveal" set:html={T('kr.g.title')} />
+      <div class="goal-grid">
+        <article class="goal reveal"><span class="goal-ico g-gold">∂</span><h4 set:html={T('kr.g1.t')} /><p set:html={T('kr.g1.d')} /></article>
+        <article class="goal reveal" style="--delay:.08s"><span class="goal-ico g-coral">bₙ</span><h4 set:html={T('kr.g2.t')} /><p set:html={T('kr.g2.d')} /></article>
+        <article class="goal reveal" style="--delay:.16s"><span class="goal-ico g-teal">AdS</span><h4 set:html={T('kr.g3.t')} /><p set:html={T('kr.g3.d')} /></article>
+      </div>
+    </div>
+  </div>
+</section>

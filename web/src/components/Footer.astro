@@ -1,0 +1,50 @@
+---
+import { t, homeHref, docHref, withBase, REPO_URL, ORG_URL, type Lang, type StringKey } from '../i18n';
+import { DOCS } from '../lib/docs';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = (k: StringKey) => t(lang, k);
+const home = homeHref(lang);
+---
+<footer class="site-footer night">
+  <div class="container">
+    <div class="colophon">
+      <img src={withBase('/aim2p-mark.svg')} alt="" width="72" height="72" />
+      <div>
+        <h3 set:html={T('foot.knot.t')} />
+        <p set:html={T('foot.knot.d')} />
+      </div>
+    </div>
+
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href={home}><img src={withBase('/aim2p-mark.svg')} alt="" width="34" height="34" /><span class="brand-word">AIM<sup>2</sup>P</span></a>
+        <p>African AI for Mathematics &amp; Mathematical Physics</p>
+        <p class="foot-tag" set:html={T('foot.tag')} />
+      </div>
+      <nav class="foot-col" aria-label={lang === 'fr' ? 'Programme' : 'Programme'}>
+        <h4 set:html={T('foot.c1')} />
+        <a href={`${home}#boucle`} set:html={T('nav.loop')} />
+        <a href={`${home}#krylov`} set:html={T('nav.krylov')} />
+        <a href={`${home}#hypotheses`} set:html={T('foot.hyp')} />
+        <a href={`${home}#feuille-de-route`} set:html={T('nav.roadmap')} />
+      </nav>
+      <nav class="foot-col" aria-label={lang === 'fr' ? 'Recherche' : 'Research'}>
+        <h4 set:html={T('foot.c2')} />
+        {DOCS.map((d) => <a href={docHref(lang, d.slug)} set:html={T(d.titleKey)} />)}
+      </nav>
+      <nav class="foot-col" aria-label={lang === 'fr' ? 'Communauté' : 'Community'}>
+        <h4 set:html={T('foot.c3')} />
+        <a href={ORG_URL} target="_blank" rel="noopener">GitHub · AIM2P</a>
+        <a href={`${REPO_URL}/issues`} target="_blank" rel="noopener" set:html={T('foot.issues')} />
+        <a href={`${home}#recherche`} set:html={T('res.cite.t')} />
+      </nav>
+    </div>
+
+    <div class="foot-legal">
+      <p>© 2026 <span set:html={T('foot.org')} /> · <span set:html={T('foot.lic')} /> <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></p>
+      <p set:html={T('foot.brand')} />
+    </div>
+  </div>
+</footer>

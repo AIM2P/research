@@ -1,0 +1,102 @@
+// Feuille de route 2026–2028 (docs/00_Roadmap_2026-2028.md, section 6).
+// Pour faire avancer le programme, changez `status` :
+//   'done' (terminée) · 'current' (en cours) · 'next' (prochaine étape) · 'planned' (planifiée)
+// Pensez aussi au bandeau « Phase en cours » du hero (src/components/home/Hero.astro).
+import type { Bi } from '../i18n';
+
+export type PhaseStatus = 'done' | 'current' | 'next' | 'planned';
+export type Chapter = 'frame' | 'found' | 'engine' | 'phys' | 'open' | 'comm' | 'disc';
+
+export interface Phase { code: string; ch: Chapter; status: PhaseStatus; s: Bi; t: Bi; d: Bi }
+
+export const CHAPTERS: Record<Chapter, Bi> = {
+  frame: { fr: 'Cadrage', en: 'Framing' },
+  found: { fr: 'Fondations', en: 'Foundations' },
+  engine: { fr: 'Moteur', en: 'Engine' },
+  phys: { fr: 'Physique & benchmark', en: 'Physics & benchmark' },
+  open: { fr: 'Science ouverte', en: 'Open science' },
+  comm: { fr: 'Communauté', en: 'Community' },
+  disc: { fr: 'Découverte', en: 'Discovery' },
+};
+
+export const STATUS: Record<PhaseStatus, Bi> = {
+  done: { fr: 'Terminée', en: 'Done' },
+  current: { fr: 'En cours', en: 'In progress' },
+  next: { fr: 'Prochaine étape', en: 'Next' },
+  planned: { fr: 'Planifiée', en: 'Planned' },
+};
+
+export const PHASES: Phase[] = [
+  { code: 'P0', ch: 'frame', status: 'current',
+    s: { fr: 'Cadrage', en: 'Framing' },
+    t: { fr: 'Cadrage scientifique', en: 'Scientific framing' },
+    d: { fr: 'Revue de littérature, identification des verrous, publication des documents fondateurs.', en: 'Literature review, identification of the research gap, publication of the founding documents.' } },
+  { code: 'P1', ch: 'found', status: 'next',
+    s: { fr: 'Cartographie', en: 'Mapping' },
+    t: { fr: 'Cartographie du domaine', en: 'Domain mapping' },
+    d: { fr: 'Matrice comparative des LLM, de Lean 4, SymPy, Rocq (ex-Coq) et Isabelle.', en: 'Comparative matrix of LLMs, Lean 4, SymPy, Rocq (formerly Coq) and Isabelle.' } },
+  { code: 'P2', ch: 'found', status: 'planned',
+    s: { fr: 'Spéc. benchmark', en: 'Benchmark spec' },
+    t: { fr: 'Spécification du benchmark', en: 'Benchmark specification' },
+    d: { fr: 'Création du jeu de données initial, niveaux N1 à N5, en mathématiques et en physique.', en: 'Initial dataset, levels N1 to N5, in mathematics and physics.' } },
+  { code: 'P3', ch: 'found', status: 'planned',
+    s: { fr: 'Baselines', en: 'Baselines' },
+    t: { fr: 'Baselines expérimentales', en: 'Experimental baselines' },
+    d: { fr: 'Évaluation des modèles actuels (OpenAI, Anthropic, DeepSeek, Llemma…), versions figées au lancement des tests.', en: 'Evaluation of current models (OpenAI, Anthropic, DeepSeek, Llemma…), versions frozen when testing starts.' } },
+  { code: 'P4', ch: 'engine', status: 'planned',
+    s: { fr: 'Moteur V0.1', en: 'Engine V0.1' },
+    t: { fr: 'Moteur neuro-symbolique', en: 'Neuro-symbolic engine' },
+    d: { fr: 'Prototype du Reasoning Engine V0.1 et de son critique SymPy.', en: 'Prototype of the Reasoning Engine V0.1 and its SymPy critic.' } },
+  { code: 'P5', ch: 'engine', status: 'planned',
+    s: { fr: 'Lean 4', en: 'Lean 4' },
+    t: { fr: 'Intégration de Lean 4', en: 'Lean 4 integration' },
+    d: { fr: 'Boucle de génération et de vérification de tactiques Lean.', en: 'Loop that generates and checks Lean tactics.' } },
+  { code: 'P6', ch: 'engine', status: 'planned',
+    s: { fr: 'Auto-correction', en: 'Self-correction' },
+    t: { fr: 'Boucle d’auto-correction', en: 'Self-correction loop' },
+    d: { fr: 'Recherche arborescente (MCTS) guidée par les erreurs du compilateur Lean.', en: 'Tree search (MCTS) guided by Lean compiler errors.' } },
+  { code: 'P7', ch: 'phys', status: 'planned',
+    s: { fr: 'Physique math.', en: 'Math. physics' },
+    t: { fr: 'Physique mathématique', en: 'Mathematical physics' },
+    d: { fr: 'Module de mécanique hamiltonienne et cas d’étude de la complexité de Krylov.', en: 'Hamiltonian mechanics module and the Krylov complexity case study.' } },
+  { code: 'P8', ch: 'phys', status: 'planned',
+    s: { fr: 'AMP-Bench', en: 'AMP-Bench' },
+    t: { fr: 'Benchmark AMP-Bench', en: 'AMP-Bench benchmark' },
+    d: { fr: 'Publication du benchmark de référence en physique mathématique.', en: 'Release of the reference benchmark for mathematical physics.' } },
+  { code: 'P9', ch: 'open', status: 'planned',
+    s: { fr: 'Publications', en: 'Publications' },
+    t: { fr: 'Publications scientifiques', en: 'Scientific publications' },
+    d: { fr: 'Rédaction et soumission de preprints (NeurIPS, ICLR, revues de physique).', en: 'Writing and submitting preprints (NeurIPS, ICLR, physics journals).' } },
+  { code: 'P10', ch: 'open', status: 'planned',
+    s: { fr: 'Open source', en: 'Open source' },
+    t: { fr: 'Écosystème open source', en: 'Open-source ecosystem' },
+    d: { fr: 'Structuration de l’organisation GitHub AIM2P : dépôts complets et documentés.', en: 'Structuring the AIM2P GitHub organisation: complete, documented repositories.' } },
+  { code: 'P11', ch: 'comm', status: 'planned',
+    s: { fr: 'Équipe', en: 'Team' },
+    t: { fr: 'Constitution de l’équipe', en: 'Building the team' },
+    d: { fr: 'Recrutement des rôles clés : recherche en mathématiques, ingénierie IA, physique, développement.', en: 'Hiring key roles: mathematics research, AI engineering, physics, development.' } },
+  { code: 'P12', ch: 'comm', status: 'planned',
+    s: { fr: 'Conseil sci.', en: 'Advisory board' },
+    t: { fr: 'Conseil scientifique', en: 'Scientific advisory board' },
+    d: { fr: 'Installation du conseil scientifique consultatif (SAB).', en: 'Setting up the scientific advisory board (SAB).' } },
+  { code: 'P13', ch: 'comm', status: 'planned',
+    s: { fr: 'Financement', en: 'Funding' },
+    t: { fr: 'Stratégie de financement', en: 'Funding strategy' },
+    d: { fr: 'Campagne de subventions et de compute grants, de 5 k$ à plus de 100 k$.', en: 'Grant and compute-grant campaign, from $5k to over $100k.' } },
+  { code: 'P14', ch: 'comm', status: 'planned',
+    s: { fr: 'Collaborations', en: 'Collaborations' },
+    t: { fr: 'Collaborations internationales', en: 'International collaborations' },
+    d: { fr: 'Partenariats visés avec des institutions telles qu’AIMS, Oxford, le Perimeter Institute, l’ENS et l’INRIA.', en: 'Targeted partnerships with institutions such as AIMS, Oxford, the Perimeter Institute, ENS and INRIA.' } },
+  { code: 'P15', ch: 'comm', status: 'planned',
+    s: { fr: 'Conférences', en: 'Conferences' },
+    t: { fr: 'Conférences et outreach', en: 'Conferences and outreach' },
+    d: { fr: 'Présentations aux workshops AI for Math et Mathematical Physics.', en: 'Talks at AI for Math and Mathematical Physics workshops.' } },
+  { code: 'P16', ch: 'comm', status: 'planned',
+    s: { fr: 'Réseau africain', en: 'African network' },
+    t: { fr: 'African Research Network', en: 'African Research Network' },
+    d: { fr: 'Lancement de groupes de recherche, de hackathons et de séminaires.', en: 'Launching research groups, hackathons and seminars.' } },
+  { code: 'P17–18', ch: 'disc', status: 'planned',
+    s: { fr: 'Découverte', en: 'Discovery' },
+    t: { fr: 'Découverte et passage à l’échelle', en: 'Discovery and scaling' },
+    d: { fr: 'Formulation assistée de conjectures et grand programme international.', en: 'Assisted formulation of conjectures and a large international programme.' } },
+];

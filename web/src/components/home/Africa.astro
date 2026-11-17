@@ -1,0 +1,45 @@
+---
+import { t, type Lang, type StringKey } from '../../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = (k: StringKey) => t(lang, k);
+---
+<!-- Afrique et science ouverte -->
+<section class="section night" id="afrique">
+  <canvas class="network" id="network" aria-hidden="true"></canvas>
+  <div class="container">
+    <div class="africa-head reveal">
+      <p class="eyebrow eyebrow-light eb-teal" set:html={T('af.eyebrow')} />
+      <h2 class="h2" set:html={T('af.title')} />
+      <p class="lead" set:html={T('af.lead')} />
+      <ul class="af-pillars">
+        <li><b set:html={T('af.p1.t')} /><span set:html={T('af.p1.d')} /></li>
+        <li><b set:html={T('af.p2.t')} /><span set:html={T('af.p2.d')} /></li>
+        <li><b set:html={T('af.p3.t')} /><span set:html={T('af.p3.d')} /></li>
+      </ul>
+    </div>
+
+    <h3 class="h3 reveal" set:html={T('af.pr.title')} />
+    <div class="principles">
+      <div class="principle reveal"><span class="pr-sym">⊢</span><h4 set:html={T('af.pr1.t')} /><p set:html={T('af.pr1.d')} /></div>
+      <div class="principle reveal" style="--delay:.05s"><span class="pr-sym">↻</span><h4 set:html={T('af.pr2.t')} /><p set:html={T('af.pr2.d')} /></div>
+      <div class="principle reveal" style="--delay:.1s"><span class="pr-sym">∅</span><h4 set:html={T('af.pr3.t')} /><p set:html={T('af.pr3.d')} /></div>
+      <div class="principle reveal" style="--delay:.15s"><span class="pr-sym">≷</span><h4 set:html={T('af.pr4.t')} /><p set:html={T('af.pr4.d')} /></div>
+      <div class="principle reveal" style="--delay:.2s"><span class="pr-sym">✓</span><h4 set:html={T('af.pr5.t')} /><p set:html={T('af.pr5.d')} /></div>
+      <div class="principle reveal" style="--delay:.25s"><span class="pr-sym">⊕</span><h4 set:html={T('af.pr6.t')} /><p set:html={T('af.pr6.d')} /></div>
+    </div>
+
+    <div class="fund reveal">
+      <div class="fund-intro">
+        <h3 class="h3" set:html={T('af.fund.t')} />
+        <p set:html={T('af.fund.d')} />
+        <a class="btn btn-gold" href="https://github.com/AIM2P/research/issues/new?title=Partenariat%20%2F%20Partnership" target="_blank" rel="noopener"><span set:html={T('af.fund.cta')} /><svg class="ico"><use href="#i-arrow"/></svg></a>
+      </div>
+      <ol class="tiers">
+        <li><span class="tier-amt">0 – 5 k$</span><b set:html={T('af.t1.t')} /><span set:html={T('af.t1.d')} /></li>
+        <li><span class="tier-amt">5 – 25 k$</span><b set:html={T('af.t2.t')} /><span set:html={T('af.t2.d')} /></li>
+        <li><span class="tier-amt">25 – 100 k$+</span><b set:html={T('af.t3.t')} /><span set:html={T('af.t3.d')} /></li>
+      </ol>
+    </div>
+  </div>
+</section>

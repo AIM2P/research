@@ -1,0 +1,36 @@
+---
+import Base from '../../layouts/Base.astro';
+import Hero from '../home/Hero.astro';
+import Problem from '../home/Problem.astro';
+import Loop from '../home/Loop.astro';
+import Krylov from '../home/Krylov.astro';
+import Landscape from '../home/Landscape.astro';
+import Gaps from '../home/Gaps.astro';
+import Hypotheses from '../home/Hypotheses.astro';
+import Bench from '../home/Bench.astro';
+import Roadmap from '../home/Roadmap.astro';
+import Research from '../home/Research.astro';
+import Africa from '../home/Africa.astro';
+import Join from '../home/Join.astro';
+import Final from '../home/Final.astro';
+import { homeHref, type Lang } from '../../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const alt = homeHref(lang === 'fr' ? 'en' : 'fr');
+---
+<Base lang={lang} altHref={alt} onHome>
+  <Hero lang={lang} />
+  <Problem lang={lang} />
+  <Loop lang={lang} />
+  <Krylov lang={lang} />
+  <Landscape lang={lang} />
+  <Gaps lang={lang} />
+  <Hypotheses lang={lang} />
+  <Bench lang={lang} />
+  <Roadmap lang={lang} />
+  <Research lang={lang} />
+  <Africa lang={lang} />
+  <Join lang={lang} />
+  <Final lang={lang} />
+</Base>

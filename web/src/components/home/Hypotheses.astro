@@ -1,0 +1,52 @@
+---
+import { t, type Lang, type StringKey } from '../../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = (k: StringKey) => t(lang, k);
+---
+<!-- Hypothèses et règle d'or -->
+<section class="section night" id="hypotheses">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow eyebrow-light eb-gold" set:html={T('hyp.eyebrow')} />
+      <h2 class="h2" set:html={T('hyp.title')} />
+      <p class="lead" set:html={T('hyp.lead')} />
+    </div>
+
+    <div class="hyp-grid">
+      <article class="hyp reveal" style="--accent: var(--gold)">
+        <div class="hyp-top"><span class="hyp-code">H1</span><span class="hyp-phase" set:html={T('hyp.h1.p')} /></div>
+        <h3 set:html={T('hyp.h1.t')} />
+        <p class="hyp-target"><span class="big">&gt; +40&nbsp;%</span><span set:html={T('hyp.h1.u')} /></p>
+        <p set:html={T('hyp.h1.d')} />
+        <p class="hyp-result"><span set:html={T('hyp.res')} /><b set:html={T('hyp.tbd')} /></p>
+      </article>
+      <article class="hyp reveal" style="--accent: var(--coral); --delay:.08s">
+        <div class="hyp-top"><span class="hyp-code">H2</span><span class="hyp-phase" set:html={T('hyp.h2.p')} /></div>
+        <h3 set:html={T('hyp.h2.t')} />
+        <p class="hyp-target"><span class="big">k &lt; 5</span><span set:html={T('hyp.h2.u')} /></p>
+        <p set:html={T('hyp.h2.d')} />
+        <p class="hyp-result"><span set:html={T('hyp.res')} /><b set:html={T('hyp.tbd')} /></p>
+      </article>
+      <article class="hyp reveal" style="--accent: var(--teal); --delay:.16s">
+        <div class="hyp-top"><span class="hyp-code">H3</span><span class="hyp-phase" set:html={T('hyp.h3.p')} /></div>
+        <h3 set:html={T('hyp.h3.t')} />
+        <p class="hyp-target"><span class="big" set:html={T('hyp.h3.big')} /><span set:html={T('hyp.h3.u')} /></p>
+        <p set:html={T('hyp.h3.d')} />
+        <p class="hyp-result"><span set:html={T('hyp.res')} /><b set:html={T('hyp.tbd')} /></p>
+      </article>
+    </div>
+
+    <div class="golden reveal">
+      <div class="golden-label">
+        <span class="pill pill-gold" set:html={T('gold.pill')} />
+        <p set:html={T('gold.sub')} />
+      </div>
+      <div class="golden-body">
+        <p class="golden-never"><s set:html={T('gold.never')} /></p>
+        <p class="golden-always" id="golden-sentence" set:html={T('gold.always')} />
+        <p class="golden-note" set:html={T('gold.note')} />
+      </div>
+    </div>
+  </div>
+</section>

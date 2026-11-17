@@ -1,0 +1,72 @@
+---
+import Base from '../../layouts/Base.astro';
+import { t, plain, tx, homeHref, docHref, pdfHref, pdfAttrs, REPO_URL, type Lang, type StringKey } from '../../i18n';
+import { DOCS, renderDoc, type DocMeta } from '../../lib/docs';
+
+interface Props { lang: Lang; doc: DocMeta }
+const { lang, doc } = Astro.props;
+const T = (k: StringKey) => t(lang, k);
+const { html, toc, subtitle, meta } = renderDoc(doc);
+const i = DOCS.findIndex((d) => d.slug === doc.slug);
+const prev = DOCS[i - 1];
+const next = DOCS[i + 1];
+const home = homeHref(lang);
+const title = plain(T(doc.titleKey));
+---
+<Base lang={lang} altHref={docHref(lang === 'fr' ? 'en' : 'fr', doc.slug)} title={title} description={plain(T(doc.descKey))}>
+  <section class="doc-hero night">
+    <div class="container">
+      <nav class="crumbs" aria-label={tx({ fr: 'Fil d’Ariane', en: 'Breadcrumb' }, lang)}>
+        <a href={home}>AIM²P</a><span aria-hidden="true">/</span>
+        <a href={`${home}#recherche`} set:html={T('res.eyebrow')} /><span aria-hidden="true">/</span>
+        <span aria-current="page">{doc.n}</span>
+      </nav>
+      <div class="doc-hero-grid">
+        <span class="doc-num" aria-hidden="true">{doc.n}</span>
+        <div>
+          <h1 set:html={T(doc.titleKey)} />
+          {subtitle && <p class="doc-sub" set:html={subtitle} />}
+          {meta && <p class="doc-meta" set:html={meta} />}
+          <div class="doc-actions">
+            <a class="btn btn-primary btn-sm" href={pdfHref(doc.file)} {...pdfAttrs()}>
+              <svg class="ico"><use href="#i-download"/></svg>{tx({ fr: 'Télécharger le PDF', en: 'Download the PDF' }, lang)}
+            </a>
+            <a class="btn btn-ghost btn-sm" href={`${REPO_URL}/blob/main/docs/${doc.file}.md`} target="_blank" rel="noopener">
+              <svg class="ico"><use href="#i-github"/></svg>{tx({ fr: 'Voir sur GitHub', en: 'View on GitHub' }, lang)}
+            </a>
+          </div>
+          {lang === 'en' && (
+            <p class="doc-langnote">This founding document is written in French. An English translation is planned.</p>
+          )}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="paper">
+    <div class="container doc-layout">
+      <nav class="toc" aria-label={tx({ fr: 'Sommaire', en: 'Contents' }, lang)}>
+        <p>{tx({ fr: 'Sommaire', en: 'Contents' }, lang)}</p>
+        <ol>
+          {toc.map((h) => <li><a href={`#${h.id}`}>{h.text}</a></li>)}
+        </ol>
+      </nav>
+      <article class="prose" lang="fr" set:html={html} />
+    </div>
+
+    <div class="container">
+      <nav class="doc-pager" aria-label={tx({ fr: 'Autres documents', en: 'Other documents' }, lang)}>
+        {prev && (
+          <a href={docHref(lang, prev.slug)} class="prev">
+            <span>← {prev.n}</span><b set:html={T(prev.titleKey)} />
+          </a>
+        )}
+        {next && (
+          <a href={docHref(lang, next.slug)} class="next">
+            <span>{next.n} →</span><b set:html={T(next.titleKey)} />
+          </a>
+        )}
+      </nav>
+    </div>
+  </div>
+</Base>

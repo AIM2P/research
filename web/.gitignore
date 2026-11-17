@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.astro/
+# copiés depuis ../branding et ../docs par scripts/sync-assets.mjs
+public/aim2p-mark.svg
+public/og.png
+public/docs/
+.artifact/

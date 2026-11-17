@@ -1,0 +1,87 @@
+---
+import { t, plain, type Lang, type StringKey } from '../../i18n';
+import { tex } from '../../lib/math';
+import { withBase } from '../../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = (k: StringKey) => t(lang, k);
+const P = (k: StringKey) => plain(t(lang, k));
+---
+<!-- Hero -->
+<section class="hero night" id="top">
+  <div class="hero-glyphs" aria-hidden="true">
+    <span style="--x:6%;--y:22%;--d:0s">∀</span><span style="--x:14%;--y:78%;--d:-4s">∂</span>
+    <span style="--x:30%;--y:12%;--d:-9s">⊢</span><span style="--x:46%;--y:88%;--d:-2s">ℕ</span>
+    <span style="--x:58%;--y:8%;--d:-6s">∑</span><span style="--x:72%;--y:84%;--d:-11s">λ</span>
+    <span style="--x:88%;--y:16%;--d:-3s">∫</span><span style="--x:94%;--y:62%;--d:-8s">φ</span>
+    <span style="--x:3%;--y:52%;--d:-12s">ℏ</span><span style="--x:36%;--y:54%;--d:-5s">∃</span>
+  </div>
+
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow eyebrow-light" set:html={T('hero.eyebrow')} />
+      <h1 class="hero-title">
+        <span class="verb verb-gold" set:html={T('hero.v1')} />
+        <span class="verb verb-coral" set:html={T('hero.v2')} />
+        <span class="verb verb-teal" set:html={T('hero.v3')} />
+      </h1>
+      <p class="hero-lead" set:html={T('hero.lead')} />
+      <div class="hero-ctas">
+        <a class="btn btn-primary btn-lg" href="#boucle"><span set:html={T('hero.cta1')} /><svg class="ico"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost btn-lg" href="#recherche" set:html={T('hero.cta2')} />
+      </div>
+      <ul class="engine-chips">
+        <li><span class="swatch sw-gold"></span><span set:html={T('hero.chip1')} /></li>
+        <li><span class="swatch sw-coral"></span><span set:html={T('hero.chip2')} /></li>
+        <li><span class="swatch sw-teal"></span><span set:html={T('hero.chip3')} /></li>
+      </ul>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="knot-stage">
+        <div class="orbit orbit-1"><i class="planet p-gold"></i></div>
+        <div class="orbit orbit-2"><i class="planet p-coral"></i></div>
+        <div class="orbit orbit-3"><i class="planet p-teal"></i></div>
+        <img class="knot" src={withBase('/aim2p-mark.svg')} alt="" width="1024" height="1024">
+
+        <div class="float-card fc-1">
+          <span class="fc-tag tag-teal">Lean 4</span>
+          <code><b class="ok">✓</b> no goals</code>
+        </div>
+        <div class="float-card fc-2">
+          <span class="fc-tag tag-coral">SymPy</span>
+          <code>expand(…) → 0</code>
+        </div>
+        <div class="float-card fc-3">
+          <span class="fc-tag tag-gold" set:html={T('hero.fc3tag')} />
+          <span set:html={T('hero.fc3')} />
+        </div>
+        <div class="float-card fc-4">
+          <span class="fc-tag tag-ivory">Krylov</span>
+          <span class="math-inline" set:html={tex(String.raw`b_n \approx \alpha n`, false)} />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="status-strip">
+      <div class="status-phase">
+        <span class="pulse-dot" aria-hidden="true"></span>
+        <div>
+          <p class="status-k" set:html={T('hero.status.k')} />
+          <p class="status-v" set:html={T('hero.status.v')} />
+        </div>
+        <div class="phase-bar" role="img" aria-label={P('hero.status.aria')}>
+          <span style="--w: calc(100% / 19)"></span>
+        </div>
+      </div>
+      <dl class="status-facts">
+        <div><dt><span class="count" data-count="3">3</span></dt><dd set:html={T('hero.f1')} /></div>
+        <div><dt><span class="count" data-count="3">3</span></dt><dd set:html={T('hero.f2')} /></div>
+        <div><dt><span class="count" data-count="19">19</span></dt><dd set:html={T('hero.f3')} /></div>
+        <div><dt><span class="count" data-count="100">100</span>&nbsp;%</dt><dd set:html={T('hero.f4')} /></div>
+      </dl>
+    </div>
+  </div>
+</section>

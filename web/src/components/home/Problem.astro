@@ -1,0 +1,31 @@
+---
+import { t, type Lang, type StringKey } from '../../i18n';
+import { tex } from '../../lib/math';
+import EulerTrap from '../islands/EulerTrap';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = (k: StringKey) => t(lang, k);
+const claim = tex(lang === 'fr'
+  ? String.raw`P(n) = n^2 + n + 41 \text{ est premier pour tout } n \in \mathbb{N}`
+  : String.raw`P(n) = n^2 + n + 41 \text{ is prime for every } n \in \mathbb{N}`);
+---
+<!-- Manifeste : convaincant n'est pas vrai -->
+<section class="section paper" id="manifeste">
+  <div class="container split split-wide">
+    <div class="reveal">
+      <p class="eyebrow eb-coral" set:html={T('man.eyebrow')} />
+      <h2 class="h2" set:html={T('man.title')} />
+      <p class="lead" set:html={T('man.lead')} />
+      <ul class="failure-list">
+        <li><span class="fl-n">01</span><div><h3 set:html={T('man.f1.t')} /><p set:html={T('man.f1.d')} /></div></li>
+        <li><span class="fl-n">02</span><div><h3 set:html={T('man.f2.t')} /><p set:html={T('man.f2.d')} /></div></li>
+        <li><span class="fl-n">03</span><div><h3 set:html={T('man.f3.t')} /><p set:html={T('man.f3.d')} /></div></li>
+        <li><span class="fl-n">04</span><div><h3 set:html={T('man.f4.t')} /><p set:html={T('man.f4.d')} /></div></li>
+      </ul>
+    </div>
+
+    <div class="reveal" style="--delay:.1s">
+      <EulerTrap client:visible lang={lang} claimHtml={claim} />
+    </div>
+  </div>
+</section>

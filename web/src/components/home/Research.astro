@@ -1,0 +1,48 @@
+---
+import { t, type Lang, type StringKey } from '../../i18n';
+import CiteBox from '../islands/CiteBox';
+import { docHref, pdfHref, pdfAttrs } from '../../i18n';
+import { DOCS } from '../../lib/docs';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = (k: StringKey) => t(lang, k);
+---
+<!-- Recherche -->
+<section class="section paper" id="recherche">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow eb-coral" set:html={T('res.eyebrow')} />
+      <h2 class="h2" set:html={T('res.title')} />
+    </div>
+
+    <blockquote class="rq reveal">
+      <p set:html={T('res.q')} />
+      <footer set:html={T('res.qsrc')} />
+    </blockquote>
+
+    <div class="sq-grid">
+      <article class="sq reveal"><span class="sq-code">SQ1</span><h3 set:html={T('res.sq1.t')} /><p set:html={T('res.sq1.d')} /></article>
+      <article class="sq reveal" style="--delay:.06s"><span class="sq-code">SQ2</span><h3 set:html={T('res.sq2.t')} /><p set:html={T('res.sq2.d')} /></article>
+      <article class="sq reveal" style="--delay:.12s"><span class="sq-code">SQ3</span><h3 set:html={T('res.sq3.t')} /><p set:html={T('res.sq3.d')} /></article>
+    </div>
+
+    <div class="docs">
+      {DOCS.map((d, i) => (
+        <article class="doc reveal" style={`--delay:${i * 0.06}s`}>
+          <span class="doc-n">{d.n}</span>
+          <h3 set:html={T(d.titleKey)} />
+          <p set:html={T(d.descKey)} />
+          <div class="doc-links">
+            <a href={docHref(lang, d.slug)}><svg class="ico"><use href="#i-file"/></svg><span set:html={T('res.read')} /></a>
+            <a href={pdfHref(d.file)} {...pdfAttrs()}><svg class="ico"><use href="#i-download"/></svg>PDF</a>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p class="fine-print" set:html={T('res.lang')} />
+
+    <div class="reveal">
+      <CiteBox client:idle lang={lang} />
+    </div>
+  </div>
+</section>

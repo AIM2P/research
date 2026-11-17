@@ -1,0 +1,50 @@
+---
+import { t, type Lang, type StringKey } from '../../i18n';
+import RoadmapMap from '../islands/RoadmapMap';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = (k: StringKey) => t(lang, k);
+---
+<!-- Feuille de route -->
+<section class="section paper-alt" id="feuille-de-route">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow eb-gold" set:html={T('rm.eyebrow')} />
+      <h2 class="h2" set:html={T('rm.title')} />
+      <p class="lead" set:html={T('rm.lead')} />
+    </div>
+
+    <div class="reveal">
+      <RoadmapMap client:visible lang={lang} />
+    </div>
+    <ul class="map-legend">
+      <li><i class="ml ml-current"></i><span set:html={T('rm.lg.current')} /></li>
+      <li><i class="ml ml-next"></i><span set:html={T('rm.lg.next')} /></li>
+      <li><i class="ml ml-planned"></i><span set:html={T('rm.lg.planned')} /></li>
+    </ul>
+
+    <h3 class="h3 reveal days-title" set:html={T('rm.days.title')} />
+    <ol class="days">
+      <li class="day reveal is-current">
+        <span class="day-range" set:html={T('rm.d1.r')} />
+        <h4 set:html={T('rm.d1.t')} />
+        <p set:html={T('rm.d1.d')} />
+      </li>
+      <li class="day reveal" style="--delay:.06s">
+        <span class="day-range" set:html={T('rm.d2.r')} />
+        <h4 set:html={T('rm.d2.t')} />
+        <p set:html={T('rm.d2.d')} />
+      </li>
+      <li class="day reveal" style="--delay:.12s">
+        <span class="day-range" set:html={T('rm.d3.r')} />
+        <h4 set:html={T('rm.d3.t')} />
+        <p set:html={T('rm.d3.d')} />
+      </li>
+      <li class="day reveal" style="--delay:.18s">
+        <span class="day-range" set:html={T('rm.d4.r')} />
+        <h4 set:html={T('rm.d4.t')} />
+        <p set:html={T('rm.d4.d')} />
+      </li>
+    </ol>
+  </div>
+</section>

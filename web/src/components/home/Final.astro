@@ -1,0 +1,18 @@
+---
+import { t, type Lang, type StringKey } from '../../i18n';
+import { withBase } from '../../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = (k: StringKey) => t(lang, k);
+---
+<!-- Appel final -->
+<section class="final night">
+  <div class="container final-inner reveal">
+    <img src={withBase('/aim2p-mark.svg')} alt="" width="120" height="120" class="final-knot">
+    <h2 class="h2" set:html={T('final.title')} />
+    <div class="hero-ctas">
+      <a class="btn btn-primary btn-lg" href="#rejoindre" set:html={T('final.cta1')} />
+      <a class="btn btn-ghost btn-lg" href="https://github.com/AIM2P/research" target="_blank" rel="noopener"><svg class="ico"><use href="#i-github"/></svg><span set:html={T('final.cta2')} /></a>
+    </div>
+  </div>
+</section>

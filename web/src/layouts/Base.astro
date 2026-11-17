@@ -1,0 +1,84 @@
+---
+// Polices auto-hébergées (aucun appel à Google Fonts) et styles de KaTeX.
+import '@fontsource/barlow/400.css';
+import '@fontsource/barlow/500.css';
+import '@fontsource/barlow/600.css';
+import '@fontsource/barlow/700.css';
+import '@fontsource/barlow/800.css';
+import '@fontsource/barlow/500-italic.css';
+import '@fontsource-variable/source-serif-4/opsz.css';
+import '@fontsource-variable/source-serif-4/opsz-italic.css';
+import '@fontsource-variable/jetbrains-mono/index.css';
+import 'katex/dist/katex.min.css';
+import '../styles/global.css';
+
+import Icons from '../components/Icons.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { t, plain, withBase, ARTIFACT, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  altHref: string;
+  title?: string;
+  description?: string;
+  onHome?: boolean;
+}
+const { lang, altHref, title, description, onHome = false } = Astro.props;
+const pageTitle = title ? `${title} · AIM²P` : 'AIM²P';
+const desc = description ?? plain(t(lang, 'meta.desc'));
+const altLang: Lang = lang === 'fr' ? 'en' : 'fr';
+const site = Astro.site;
+const canonical = site ? new URL(Astro.url.pathname, site).href : undefined;
+const altAbs = site ? new URL(altHref, site).href : altHref;
+const ogImage = site ? new URL(withBase('/og.png'), site).href : withBase('/og.png');
+const enHome = withBase('/en/');
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={desc} />
+    <meta name="theme-color" content="#0A1430" />
+    <link rel="icon" type="image/svg+xml" href={withBase('/aim2p-mark.svg')} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="alternate" hreflang={altLang} href={altAbs} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content={lang === 'fr' ? 'fr_FR' : 'en_GB'} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script is:inline define:vars={{ redirectToEn: onHome && lang === 'fr' && !ARTIFACT, enHome }}>
+      // Thème et classe .js appliqués avant le premier rendu (pas de flash).
+      (function () {
+        var d = document.documentElement, theme = null, pref = null;
+        d.classList.add('js');
+        if (/[?&]static\b/.test(location.search)) d.classList.add('static');
+        try { theme = localStorage.getItem('aim2p-theme'); pref = localStorage.getItem('aim2p-lang'); } catch (e) {}
+        if (!theme) theme = d.getAttribute('data-theme');
+        if (!theme) theme = (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
+        d.setAttribute('data-theme', theme);
+        // Première visite d'un lecteur non francophone : version anglaise.
+        if (redirectToEn && !pref && !/^fr\b/i.test(navigator.language || 'fr') && !/[?&]static\b/.test(location.search)) {
+          location.replace(enHome + location.hash);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <Icons />
+    <a class="skip-link" href="#main" set:html={t(lang, 'a11y.skip')} />
+    <Header lang={lang} altHref={altHref} onHome={onHome} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+    <script>
+      import '../scripts/site';
+    </script>
+  </body>
+</html>

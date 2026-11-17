@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import { homeHref, withBase } from '../i18n';
+---
+<Base lang="fr" altHref={withBase('/en/')} title="Page introuvable">
+  <section class="notfound paper">
+    <div class="container">
+      <p class="big">404</p>
+      <h1 class="h2">Cette page n’existe pas. <em>This page does not exist.</em></h1>
+      <p>Le lien est peut-être ancien, ou l’adresse contient une faute de frappe. The link may be outdated, or the address may contain a typo.</p>
+      <div class="hero-ctas" style="justify-content:center">
+        <a class="btn btn-primary" href={homeHref('fr')}>Accueil</a>
+        <a class="btn btn-ghost" href={homeHref('en')}>Home</a>
+      </div>
+    </div>
+  </section>
+</Base>

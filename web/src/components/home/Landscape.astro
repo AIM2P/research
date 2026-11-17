@@ -1,0 +1,48 @@
+---
+import { t, type Lang, type StringKey } from '../../i18n';
+import Venn from '../islands/Venn';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = (k: StringKey) => t(lang, k);
+---
+<!-- Paysage : état de l'art -->
+<section class="section paper" id="paysage">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow eb-gold" set:html={T('sota.eyebrow')} />
+      <h2 class="h2" set:html={T('sota.title')} />
+      <p class="lead" set:html={T('sota.lead')} />
+    </div>
+
+    <div class="reveal">
+      <Venn client:visible lang={lang} />
+    </div>
+
+    <div class="pillars">
+      <article class="pillar reveal">
+        <h3 set:html={T('sota.p1.t')} />
+        <p class="pillar-who">DeepSeek-R1, OpenAI o1/o3, Llemma, AlphaProof</p>
+        <p class="plus" set:html={T('sota.p1.plus')} />
+        <p class="minus" set:html={T('sota.p1.minus')} />
+      </article>
+      <article class="pillar reveal" style="--delay:.06s">
+        <h3 set:html={T('sota.p2.t')} />
+        <p class="pillar-who">Lean 4 (Mathlib), Rocq, Isabelle/HOL</p>
+        <p class="plus" set:html={T('sota.p2.plus')} />
+        <p class="minus" set:html={T('sota.p2.minus')} />
+      </article>
+      <article class="pillar reveal" style="--delay:.12s">
+        <h3 set:html={T('sota.p3.t')} />
+        <p class="pillar-who">SymPy, SageMath, Mathematica</p>
+        <p class="plus" set:html={T('sota.p3.plus')} />
+        <p class="minus" set:html={T('sota.p3.minus')} />
+      </article>
+      <article class="pillar reveal" style="--delay:.18s">
+        <h3 set:html={T('sota.p4.t')} />
+        <p class="pillar-who">IAIFI (MIT/Harvard), SciML, PINN</p>
+        <p class="plus" set:html={T('sota.p4.plus')} />
+        <p class="minus" set:html={T('sota.p4.minus')} />
+      </article>
+    </div>
+  </div>
+</section>

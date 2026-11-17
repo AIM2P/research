@@ -1,0 +1,46 @@
+---
+import { t, type Lang, type StringKey } from '../../i18n';
+import { tex } from '../../lib/math';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = (k: StringKey) => t(lang, k);
+---
+<!-- AMP-Bench -->
+<section class="section paper" id="bench">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow eb-teal" set:html={T('bench.eyebrow')} />
+      <h2 class="h2" set:html={T('bench.title')} />
+      <p class="lead" set:html={T('bench.lead')} />
+    </div>
+
+    <ol class="ladder">
+      <li class="rung reveal" style="--lvl:1">
+        <span class="rung-lvl">N1</span>
+        <h3 set:html={T('bench.n1.t')} />
+        <div class="math-block" set:html={tex(String.raw`(\sin x^2)' = 2x\cos x^2`, true)} />
+      </li>
+      <li class="rung reveal" style="--lvl:2; --delay:.06s">
+        <span class="rung-lvl">N2</span>
+        <h3 set:html={T('bench.n2.t')} />
+        <div class="math-block" set:html={tex(String.raw`\sum_{k=0}^{n-1}(2k+1) = n^2`, true)} />
+      </li>
+      <li class="rung reveal" style="--lvl:3; --delay:.12s">
+        <span class="rung-lvl">N3</span>
+        <h3 set:html={T('bench.n3.t')} />
+        <div class="math-block" set:html={tex(String.raw`\sqrt{2} \notin \mathbb{Q}`, true)} />
+      </li>
+      <li class="rung reveal" style="--lvl:4; --delay:.18s">
+        <span class="rung-lvl">N4</span>
+        <h3 set:html={T('bench.n4.t')} />
+        <div class="math-block" set:html={tex(String.raw`\frac{dH}{dt} = \{H, H\} = 0`, true)} />
+      </li>
+      <li class="rung reveal" style="--lvl:5; --delay:.24s">
+        <span class="rung-lvl">N5</span>
+        <h3 set:html={T('bench.n5.t')} />
+        <div class="math-block" set:html={tex(String.raw`\lambda_L \le 2\alpha`, true)} />
+      </li>
+    </ol>
+    <p class="fine-print" set:html={T('bench.note')} />
+  </div>
+</section>

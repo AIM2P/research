@@ -1,0 +1,46 @@
+---
+import { t, plain, homeHref, withBase, REPO_URL, type Lang, type StringKey } from '../i18n';
+
+interface Props { lang: Lang; altHref: string; onHome: boolean }
+const { lang, altHref, onHome } = Astro.props;
+const T = (k: StringKey) => t(lang, k);
+const home = homeHref(lang);
+// Sur l'accueil, ancres locales ; ailleurs, ancres de la page d'accueil.
+const anchor = (id: string) => (onHome ? `#${id}` : `${home}#${id}`);
+const NAV: [string, StringKey][] = [
+  ['manifeste', 'nav.program'], ['boucle', 'nav.loop'], ['krylov', 'nav.krylov'],
+  ['feuille-de-route', 'nav.roadmap'], ['recherche', 'nav.research'], ['rejoindre', 'nav.join'],
+];
+const frHref = lang === 'fr' ? '' : altHref;
+const enHref = lang === 'en' ? '' : altHref;
+---
+<header class="site-header" id="header">
+  <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress"></span></div>
+  <div class="container header-inner">
+    <a class="brand" href={home} aria-label="AIM²P">
+      <img src={withBase('/aim2p-mark.svg')} alt="" width="38" height="38" />
+      <span class="brand-word">AIM<sup>2</sup>P</span>
+    </a>
+
+    <nav class="main-nav" id="main-nav" aria-label={plain(T('a11y.nav'))}>
+      {NAV.map(([id, key]) => <a href={anchor(id)} data-nav={id} set:html={T(key)} />)}
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang-switch" role="group" aria-label="Langue / Language">
+        <a href={frHref || '#'} hreflang="fr" lang="fr" data-set-lang="fr" aria-current={lang === 'fr' ? 'true' : undefined}>FR</a>
+        <a href={enHref || '#'} hreflang="en" lang="en" data-set-lang="en" aria-current={lang === 'en' ? 'true' : undefined}>EN</a>
+      </div>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label={plain(T('a11y.theme'))}>
+        <svg class="ico ico-sun"><use href="#i-sun"/></svg>
+        <svg class="ico ico-moon"><use href="#i-moon"/></svg>
+      </button>
+      <a class="btn btn-sm btn-gold header-gh" href={REPO_URL} target="_blank" rel="noopener">
+        <svg class="ico"><use href="#i-github"/></svg><span>GitHub</span>
+      </a>
+      <button type="button" class="icon-btn menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Menu">
+        <svg class="ico"><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </div>
+</header>

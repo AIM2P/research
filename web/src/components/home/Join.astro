@@ -1,0 +1,54 @@
+---
+import { t, type Lang, type StringKey } from '../../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const T = (k: StringKey) => t(lang, k);
+---
+<!-- Rejoindre -->
+<section class="section paper" id="rejoindre">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow eb-gold" set:html={T('join.eyebrow')} />
+      <h2 class="h2" set:html={T('join.title')} />
+      <p class="lead" set:html={T('join.lead')} />
+    </div>
+
+    <div class="roles">
+      <article class="role card reveal" style="--accent: var(--gold)">
+        <span class="role-sym">∀</span>
+        <h3 set:html={T('join.r1.t')} />
+        <p set:html={T('join.r1.d')} />
+      </article>
+      <article class="role card reveal" style="--accent: var(--coral); --delay:.06s">
+        <span class="role-sym">ℏ</span>
+        <h3 set:html={T('join.r2.t')} />
+        <p set:html={T('join.r2.d')} />
+      </article>
+      <article class="role card reveal" style="--accent: var(--teal); --delay:.12s">
+        <span class="role-sym">λ</span>
+        <h3 set:html={T('join.r3.t')} />
+        <p set:html={T('join.r3.d')} />
+      </article>
+      <article class="role card reveal" style="--accent: var(--ink); --delay:.18s">
+        <span class="role-sym">⊢</span>
+        <h3 set:html={T('join.r4.t')} />
+        <p set:html={T('join.r4.d')} />
+      </article>
+    </div>
+
+    <div class="contribute reveal">
+      <h3 class="h3" set:html={T('join.now.t')} />
+      <div class="contrib-list">
+        <a class="contrib" href="https://github.com/AIM2P/research/issues/new?title=R%C3%A9f%C3%A9rence%20manquante%20%2F%20Missing%20reference" target="_blank" rel="noopener">
+          <span class="contrib-n">01</span><span set:html={T('join.c1')} /><svg class="ico"><use href="#i-external"/></svg>
+        </a>
+        <a class="contrib" href="https://github.com/AIM2P/research/issues/new?title=Hypoth%C3%A8se%20%2F%20Hypothesis" target="_blank" rel="noopener">
+          <span class="contrib-n">02</span><span set:html={T('join.c2')} /><svg class="ico"><use href="#i-external"/></svg>
+        </a>
+        <a class="contrib" href="https://github.com/AIM2P/research/issues/new?title=Expression%20d%27int%C3%A9r%C3%AAt%20%2F%20Expression%20of%20interest" target="_blank" rel="noopener">
+          <span class="contrib-n">03</span><span set:html={T('join.c3')} /><svg class="ico"><use href="#i-external"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
