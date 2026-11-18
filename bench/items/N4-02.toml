@@ -20,5 +20,5 @@ module = "AMPBench.Items.N4_02"
 theorem = "n4_02"
 
 [audit]
-status = "pending"
+status = "ok"
 notes = "Audit préliminaire (IA, 18 nov. 2026) : énoncé fidèle (base d'ouverts dénombrable : Set.Countable B ∧ IsTopologicalBasis B). Le résultat est déjà dans Mathlib : un compact est σ-compact, un espace métrique σ-compact est à base dénombrable (instance EMetric.secondCountable_of_sigmaCompact), et TopologicalSpace.exists_countable_basis donne la base. L'en-tête importe ces modules, comme `import Mathlib` le faisait dans la source ; l'exercice se réduit alors à retrouver ces noms, pouvoir discriminant faible pour un prouveur qui connaît Mathlib. Compile tel quel sous Lean v4.35. Accepté, à confirmer par le fondateur."

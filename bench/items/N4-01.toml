@@ -20,5 +20,5 @@ module = "AMPBench.Items.N4_01"
 theorem = "n4_01"
 
 [audit]
-status = "pending"
+status = "ok"
 notes = "Audit préliminaire (IA, 18 nov. 2026) : énoncé fidèle : il existe un groupe G et un sous-groupe H distingué mais pas caractéristique (Subgroup.Normal, Subgroup.Characteristic de Mathlib). G est quantifié dans un univers quelconque (Type*), ce qui oblige une preuve à passer par ULift, sans changer le fond. Énoncé vrai et non vide (par exemple ℤ × ℤ et le facteur ℤ × {0}, que l'échange des facteurs ne préserve pas). L'énoncé compile tel quel sous Lean v4.35 (ProofNet# vise Lean v4.7 à v4.16). Accepté, à confirmer par le fondateur."

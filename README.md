@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="LICENSE"><img alt="License: CC BY 4.0" src="https://img.shields.io/badge/license-CC%20BY%204.0-1FB28C"></a>
-  <img alt="Status: Phase 2, benchmark specification" src="https://img.shields.io/badge/status-Phase%202%20%C2%B7%20benchmark%20specification-F6B73C">
+  <img alt="Status: Phase 3, experimental baselines" src="https://img.shields.io/badge/status-Phase%203%20%C2%B7%20experimental%20baselines-F6B73C">
   <img alt="Documents in French" src="https://img.shields.io/badge/docs-fran%C3%A7ais-EE5A3E">
 </p>
 
@@ -66,7 +66,7 @@ Formal verification has made fast progress on competition mathematics, but theor
 | Phases | Focus | Status |
 |---|---|---|
 | P0 | Scientific framing: question, state of the art, gap, research proposal | ✅ Done |
-| P1 – P3 | Domain mapping, benchmark specification, baselines | ✅ P1 done · 🔄 P2 in progress |
+| P1 – P3 | Domain mapping, benchmark specification, baselines | ✅ P1–P2 done (AMP-Bench-mini v1.0 frozen) · 🔄 P3 in progress |
 | P4 – P6 | Reasoning engine, Lean 4 integration, compiler-guided self-correction | Planned |
 | P7 – P8 | Mathematical physics module and AMP-Bench | Planned |
 | P9 – P10 | Publications and open-source ecosystem | Planned |

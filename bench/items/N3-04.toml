@@ -20,5 +20,5 @@ module = "AMPBench.Items.N3_04"
 theorem = "n3_04"
 
 [audit]
-status = "pending"
+status = "ok"
 notes = "Audit préliminaire (IA, 18 nov. 2026) : énoncé fidèle. La positivité de m et n n'est pas écrite, mais elle découle de Nat.lcm m n = 126 ≠ 0 (Nat.lcm m 0 = 0), donc rien n'est perdu. IsLeast exige à la fois l'appartenance (m = 18, n = 42) et la minoration, réponse 60 correcte. Accepté, à confirmer par le fondateur."

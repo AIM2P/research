@@ -20,5 +20,5 @@ module = "AMPBench.Items.N4_05"
 theorem = "n4_05"
 
 [audit]
-status = "pending"
+status = "ok"
 notes = "Audit préliminaire (IA, 18 nov. 2026) : énoncé fidèle. trinums est l'ensemble des nombres triangulaires n(n + 1)/2 : prendre n dans ℤ donne les mêmes valeurs que n dans ℕ, la division entière est exacte car n(n + 1) est pair, et t ≥ 0 est redondant. « Une infinité de couples » est rendu par encard = ⊤, t parcourt les entiers strictement positifs. Aucune hypothèse vide ou contradictoire repérée. Compile tel quel sous Lean v4.35 (PutnamBench vise v4.33.1). Énoncé informel : texte du concours Putnam (MAA), diffusé par PutnamBench avec la permission de la MAA ; vérifier que cette permission couvre sa reprise dans AMP-Bench-mini. Aucune preuve formelle de ce problème ne doit être écrite ni publiée (demande des mainteneurs de PutnamBench). Accepté, à confirmer par le fondateur."

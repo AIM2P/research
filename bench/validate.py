@@ -110,6 +110,10 @@ def check_item(path: Path, it: dict, errors: list[str], warnings: list[str]) -> 
         if not {"module", "theorem"} <= lean.keys():
             err("[lean] doit donner module et theorem")
             return
+        expected = "AMPBench.Private." if it["visibility"] == "private" else "AMPBench.Items."
+        if not lean["module"].startswith(expected):
+            err(f"module Lean {lean['module']} : doit commencer par {expected} "
+                "(défis privés hors dépôt jusqu'à l'évaluation)")
         lf = lean_path(lean["module"])
         if not lf.is_file():
             err(f"fichier Lean introuvable : {lf.relative_to(BENCH)}")
@@ -130,7 +134,12 @@ def check_item(path: Path, it: dict, errors: list[str], warnings: list[str]) -> 
             err("[answer] doit donner value")
             return
         try:
-            import sympy
+            try:
+                import sympy
+            except ImportError:  # SymPy installé dans le dossier utilisateur, invisible sous `python -I`
+                import site
+                sys.path.append(site.getusersitepackages())
+                import sympy
             syms = {name: sympy.Symbol(name) for name in ans.get("variables", [])}
             sympy.sympify(ans["value"], locals=syms)
         except ImportError:

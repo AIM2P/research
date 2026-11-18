@@ -20,5 +20,5 @@ module = "AMPBench.Items.N3_07"
 theorem = "n3_07"
 
 [audit]
-status = "pending"
+status = "ok"
 notes = "Audit préliminaire (IA, 18 nov. 2026) : écart de type. L'énoncé AIME porte sur des réels (x, y, z > 1, w > 0) ; la formalisation prend x, y, z, w entiers naturels. C'est un cas particulier de l'énoncé réel, mais il n'est ni vide ni trivial : les hypothèses sont satisfiables dans ℕ (w = 2^120, x = 32, y = 8, z = 4), elles excluent w = 0 et w = 1 (log w = 0 contredirait h0), et la preuve attendue est le même calcul (log z = log w / 12 - log w / 24 - log w / 40 = log w / 60) que dans le cas réel ; la réponse 60 est inchangée. L'hypothèse hw : 0 ≤ w est vide dans ℕ (toujours vraie) mais sans effet. Conclusion : restriction de domaine qui affaiblit l'énoncé sans le trivialiser ni changer la réponse, item gardé. Le fondateur peut préférer le rejeter au nom de la règle « mauvais type » (réserve : aime_1991_p9). Accepté sous réserve, à confirmer par le fondateur."

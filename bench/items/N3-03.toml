@@ -20,5 +20,5 @@ module = "AMPBench.Items.N3_03"
 theorem = "n3_03"
 
 [audit]
-status = "pending"
+status = "ok"
 notes = "Audit préliminaire (IA, 18 nov. 2026) : énoncé fidèle (121 × 122 × 123 = 1 815 726 ≡ 2 mod 4), calcul dans ℕ. Énoncé sans hypothèse, trivialement prouvable par calcul (un essai local montre qu'une seule tactique de calcul le ferme) ; le problème informel est lui-même un simple calcul, la formalisation ne le rend donc pas plus facile. Gardé pour respecter le tirage aléatoire, mais son pouvoir discriminant est nul ou presque : au fondateur de décider s'il faut le remplacer par la réserve (mathd_numbertheory_254). Accepté sous réserve, à confirmer par le fondateur."

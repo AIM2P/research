@@ -27,5 +27,5 @@ module = "AMPBench.Items.N3_02"
 theorem = "n3_02"
 
 [audit]
-status = "pending"
+status = "ok"
 notes = "Audit préliminaire (IA, 18 nov. 2026) : énoncé fidèle (x = 14 se déduit par combinaison linéaire des deux équations : 3 × (1) + 4 × (2)). Hypothèses satisfiables (x = 14, y = -8, z = 0). Problème facile : un essai local montre qu'une seule tactique d'automatisation standard le ferme, pouvoir discriminant faible. Accepté, à confirmer par le fondateur."

@@ -20,5 +20,5 @@ module = "AMPBench.Items.N4_06"
 theorem = "n4_06"
 
 [audit]
-status = "pending"
+status = "ok"
 notes = "Audit préliminaire (IA, 18 nov. 2026) : énoncé fidèle (‖z‖ est le module de z, I = Complex.I grâce à open Complex). L'hypothèse hz est satisfiable (le polynôme a des racines complexes), donc l'énoncé n'est pas vide. Compile tel quel sous Lean v4.35. Énoncé informel : texte du concours Putnam (MAA), diffusé par PutnamBench avec la permission de la MAA ; vérifier que cette permission couvre sa reprise dans AMP-Bench-mini. Aucune preuve formelle de ce problème ne doit être écrite ni publiée (demande des mainteneurs de PutnamBench). Accepté, à confirmer par le fondateur."

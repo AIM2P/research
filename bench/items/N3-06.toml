@@ -22,5 +22,5 @@ module = "AMPBench.Items.N3_06"
 theorem = "n3_06"
 
 [audit]
-status = "pending"
+status = "ok"
 notes = "Audit préliminaire (IA, 18 nov. 2026) : énoncé fidèle, réponse 5, choix (E). Point vérifié : dans Mathlib, Real.tan = sin / cos vaut 0 là où cos(2x) = 0 (convention x / 0 = 0). Ces points x = π/4 + kπ/2 pourraient créer de fausses solutions si cos(x/2) = 0, or sur [0, 2π] cos(x/2) ne s'annule qu'en x = π, qui n'est pas de cette forme : aucune solution parasite, l'ensemble formel a bien 5 éléments. Accepté, à confirmer par le fondateur."

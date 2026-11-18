@@ -21,6 +21,7 @@ bench/
   tools/            tirage reproductible, vérification Lean sous WSL
   validate.py       validateur (format, imports, réponses SymPy, effectifs, empreintes)
   HASHES.txt        empreintes SHA-256 publiées au gel
+  FREEZE.md         procès-verbal du gel (v1.0, 18 novembre 2026)
 ```
 
 ## Format d'un problème

@@ -20,5 +20,5 @@ module = "AMPBench.Items.N3_08"
 theorem = "n3_08"
 
 [audit]
-status = "pending"
+status = "ok"
 notes = "Audit préliminaire (IA, 18 nov. 2026) : énoncé fidèle : égalité d'ensembles (les deux inclusions sont à prouver), x ^ y ^ 2 se lit x ^ (y ^ 2), positivité imposée par h₀, réponse {(1, 1), (16, 2), (27, 3)} conforme à la solution officielle. Problème difficile, aucun raccourci repéré. Accepté, à confirmer par le fondateur."

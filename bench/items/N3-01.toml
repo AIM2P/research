@@ -20,5 +20,5 @@ module = "AMPBench.Items.N3_01"
 theorem = "n3_01"
 
 [audit]
-status = "pending"
+status = "ok"
 notes = "Audit préliminaire (IA, 18 nov. 2026) : énoncé fidèle. Comme partout dans miniF2F, la réponse (a² + b² = 369) est écrite dans l'énoncé formel au lieu d'être demandée. Aucune hypothèse de positivité sur a et b (côtés d'un rectangle), mais la conclusion découle des seules relations ab = 180 et a + b = 27, donc l'énoncé formel n'est ni plus faible ni vide (hypothèses satisfaites par a = 12, b = 15). Problème facile : un essai local montre qu'une seule tactique d'automatisation standard le ferme, pouvoir discriminant faible. Accepté, à confirmer par le fondateur."

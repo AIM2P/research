@@ -19,3 +19,4 @@ desktop.ini
 
 # AMP-Bench-mini : items inédits, publiés seulement après l'évaluation (empreintes dans bench/HASHES.txt)
 bench/private/
+bench/lean/AMPBench/Private/

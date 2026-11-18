@@ -5,7 +5,7 @@
 #
 # Usage, depuis Ubuntu (WSL) :
 #   bash "/mnt/c/Users/LENOVO/Documents/Research Project AIM²P/bench/tools/check_lean_wsl.sh" [module ...]
-# Sans argument : tous les fichiers de AMPBench/Items/.
+# Sans argument : tous les fichiers de AMPBench/Items/ et AMPBench/Private/ (défis privés, hors dépôt).
 #
 # Code sous licence Apache-2.0 (voir bench/LICENSE).
 set -uo pipefail
@@ -20,7 +20,14 @@ if [ "$#" -gt 0 ]; then
   files=()
   for m in "$@"; do files+=("$(echo "$m" | tr . /).lean"); done
 else
-  mapfile -t files < <(ls AMPBench/Items/*.lean 2>/dev/null | sort)
+  mapfile -t files < <(ls AMPBench/Items/*.lean AMPBench/Private/*.lean 2>/dev/null | sort)
+fi
+
+# Mathlib arrive compilé par son cache (`lake exe cache get`). Les modules Physlib importés, eux,
+# se compilent localement à la première utilisation : on les construit avant `lake env lean`.
+mapfile -t mods < <(grep -h '^import Physlib' "${files[@]}" 2>/dev/null | awk '{print $2}' | sort -u)
+if [ "${#mods[@]}" -gt 0 ]; then
+  lake build "${mods[@]}" > /tmp/aim2p_build_imports.log 2>&1     || { echo "avertissement : construction des imports Physlib incomplète (voir /tmp/aim2p_build_imports.log)"; }
 fi
 
 fail=0
