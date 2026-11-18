@@ -115,6 +115,18 @@ Il s'appuie sur trois sources : les notes de recherche P1 du 18 novembre 2026 (o
 - **Usage des données et items privés.** Les items privés (N1, N2, N5) ne passent que par des routes sans conservation (NVIDIA, §2.3) ou par du calcul que l'on contrôle (portable, notebooks Kaggle privés). Ils ne passent jamais par l'offre gratuite de Gemini, par les points d'accès OpenRouter susceptibles d'entraîner sur les données, ni par AXLE (service hébergé). La clause §2.6(a) des conditions NVIDIA, qui demande de ne pas soumettre d'« informations confidentielles », reste à apprécier pour des items inédits (§9).
 - **Dérive de versions des prouveurs.** Les prouveurs ont été entraînés sur Lean 4.9 à 4.15, alors que la v4.35.0 retire notamment `Lean.reduceBool`, `Lean.reduceNat` et `Lean.trustCompiler`. Une partie du gain de B3 viendra donc de la correction de lemmes renommés plutôt que d'erreurs logiques. Chaque échec est classé : `unknown identifier/constant`, `deprecated`, `type mismatch`, `unsolved goals`, `timeout` ou autre. Les gains de B3 sont rapportés avec et sans ces corrections de noms. La catégorie H-c du document 04 sera scindée en identifiants inventés et identifiants renommés, selon une règle de classement à fixer en P2.
 
+> [!NOTE]
+> **Réglages de la campagne P3, validés par le fondateur le 18 novembre 2026**
+>
+> Ces réglages sont figés dans `harness/config/p3_baselines.toml` avant le premier appel sur les 40 problèmes figés :
+>
+> - **Échantillonnage :** température 0,6 et top_p 0,95, pour que les 5 échantillons partagés par B0, B1 et B2 diffèrent ; graine dérivée par échantillon et envoyée au fournisseur.
+> - **Longueur :** `max_tokens` = 32 000, raisonnement compris (le pilote a mesuré 11 806 tokens sur un problème de développement).
+> - **Fournisseur :** Nvidia imposé, sans bascule silencieuse ; aucune invite système ; effort de raisonnement par défaut.
+> - **Sélection B2 :** pour les réponses fermées, vote majoritaire entre les 5 réponses, à équivalence SymPy et numérique près, sans accès à la clé. Pour les preuves, B2 = B1 par construction.
+> - **Correction :** un verdict « à auditer » (désaccord symbolique/numérique) compte comme un échec jusqu'à l'audit manuel. Délai de `lake comparator` : 600 s.
+> - **Volume et contrôle :** R = 3, k = 5, soit 600 requêtes sur les 40 problèmes ; deux problèmes de développement (DEV-03, DEV-04) sont rejoués chaque jour pour détecter un changement silencieux du modèle.
+
 ## 5. Chaîne de vérification
 
 | Étape | Outil | Où | Coût mesuré ou estimé | Ce qui est vérifié |

@@ -1,0 +1,24 @@
+id = "DEV-04"
+level = "N2"
+kind = "answer"
+split = "dev"
+visibility = "public"
+title = "Plus grande racine d'un polynôme bicarré (développement)"
+statement = '''
+Déterminer la plus grande racine réelle du polynôme $P(x) = x^4 - 10x^2 + 1$.
+Donner sa valeur exacte, à l'aide de radicaux.
+'''
+
+[source]
+name = "AIM²P"
+ref = "rédigé pour les pilotes de P3 (problème de développement)"
+licence = "CC-BY-4.0"
+modified = false
+
+[answer]
+value = "sqrt(2) + sqrt(3)"
+variables = []
+
+[audit]
+status = "pending"
+notes = "Problème de développement (pilotes P3), jamais évalué. Clé confirmée par deux méthodes (polynôme minimal SymPy, racines numériques mpmath) : bench/tools/check_dev_keys.py. Formes équivalentes attendues, par exemple sqrt(5 + 2*sqrt(6)) : elles exercent la comparaison par polynôme minimal du correcteur. Relecture du fondateur à faire."

@@ -1,0 +1,24 @@
+id = "DEV-02"
+level = "N3"
+kind = "proof"
+split = "dev"
+visibility = "public"
+title = "Carrés modulo 3 (développement)"
+statement = '''
+Show that a square number must either be a multiple of 3 or have a remainder of 1 when divided by 3.
+'''
+
+[source]
+name = "google-deepmind/miniF2F"
+ref = "MiniF2F/Valid.lean : numbertheory_sqmod3in01d"
+commit = "f0a20e14c1eeccd859d51bb4c2b3ee487889c303"
+licence = "Apache-2.0"
+modified = false
+
+[lean]
+module = "AMPBench.Items.DEV_02"
+theorem = "dev_02"
+
+[audit]
+status = "pending"
+notes = "Problème de développement (pilotes P3), jamais évalué. Tiré de MiniF2F/Valid.lean (jamais de Test.lean) par bench/tools/select_dev_minif2f.py, graine 20261118 (bench/items/DEV_selection.json). Énoncé repris tel quel ; compile sous Lean v4.35.0 avec l'en-tête ciblé. Relecture du fondateur à faire."

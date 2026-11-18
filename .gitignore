@@ -20,3 +20,9 @@ desktop.ini
 # AMP-Bench-mini : items inédits, publiés seulement après l'évaluation (empreintes dans bench/HASHES.txt)
 bench/private/
 bench/lean/AMPBench/Private/
+
+# Harnais P3 : sorties brutes des modèles (invites, réponses, solutions, journaux Lean, compteur de requêtes).
+# Elles peuvent contenir des problèmes inédits ou des preuves PutnamBench : jamais dans le dépôt.
+results/raw/
+bench/lean/AMPBench/Solutions/
+bench/lean/comparator/solutions/

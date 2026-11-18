@@ -1,0 +1,185 @@
+{
+ "campaign": "pilot_dev_b0",
+ "levels": {
+  "N1": {
+   "B0": {
+    "items": 1,
+    "mean": 1.0,
+    "wilson95": [
+     0.20654931437723745,
+     1.0
+    ],
+    "trials": 1,
+    "successes": 1,
+    "pooled_wilson95": [
+     0.20654931437723745,
+     1.0
+    ]
+   },
+   "B1": null,
+   "B2": null
+  },
+  "N2": {
+   "B0": {
+    "items": 1,
+    "mean": 1.0,
+    "wilson95": [
+     0.20654931437723745,
+     1.0
+    ],
+    "trials": 1,
+    "successes": 1,
+    "pooled_wilson95": [
+     0.20654931437723745,
+     1.0
+    ]
+   },
+   "B1": null,
+   "B2": null
+  },
+  "N3": {
+   "B0": {
+    "items": 2,
+    "mean": 1.0,
+    "wilson95": [
+     0.34238022750665303,
+     1.0
+    ],
+    "trials": 2,
+    "successes": 2,
+    "pooled_wilson95": [
+     0.34238022750665303,
+     1.0
+    ]
+   },
+   "B1": null,
+   "B2": null
+  },
+  "N5": {
+   "B0": {
+    "items": 1,
+    "mean": 1.0,
+    "wilson95": [
+     0.20654931437723745,
+     1.0
+    ],
+    "trials": 1,
+    "successes": 1,
+    "pooled_wilson95": [
+     0.20654931437723745,
+     1.0
+    ]
+   },
+   "B1": null,
+   "B2": null
+  },
+  "Tous": {
+   "B0": {
+    "items": 5,
+    "mean": 1.0,
+    "wilson95": [
+     0.5655175352168251,
+     1.0
+    ],
+    "trials": 5,
+    "successes": 5,
+    "pooled_wilson95": [
+     0.5655175352168251,
+     1.0
+    ]
+   },
+   "B1": null,
+   "B2": null
+  }
+ },
+ "operations": {
+  "generations": 5,
+  "verdicts": {
+   "accepted": 2,
+   "correct": 3
+  },
+  "error_classes": {},
+  "taxonomy": {},
+  "models_returned": {
+   "nvidia/nemotron-3-ultra-550b-a55b:free": 5
+  },
+  "providers": {
+   "Nvidia": 5
+  },
+  "needs_audit": [],
+  "tokens_prompt": 1713,
+  "tokens_completion": 20408
+ },
+ "generations": [
+  {
+   "key": "DEV-01|r1|s1",
+   "level": "N3",
+   "kind": "proof",
+   "verdict": "accepted",
+   "error_class": null,
+   "latency_s": 19.952,
+   "model_returned": "nvidia/nemotron-3-ultra-550b-a55b:free",
+   "provider": "Nvidia",
+   "tokens": "408+1478 (raisonnement 1134)",
+   "comparator_s": 10.13,
+   "end_to_end_s": 30.19,
+   "finish_reason": "stop"
+  },
+  {
+   "key": "DEV-02|r1|s1",
+   "level": "N3",
+   "kind": "proof",
+   "verdict": "accepted",
+   "error_class": null,
+   "latency_s": 52.814,
+   "model_returned": "nvidia/nemotron-3-ultra-550b-a55b:free",
+   "provider": "Nvidia",
+   "tokens": "408+5751 (raisonnement 5059)",
+   "comparator_s": 9.95,
+   "end_to_end_s": 62.87,
+   "finish_reason": "stop"
+  },
+  {
+   "key": "DEV-03|r1|s1",
+   "level": "N1",
+   "kind": "answer",
+   "verdict": "correct",
+   "error_class": null,
+   "latency_s": 5.827,
+   "model_returned": "nvidia/nemotron-3-ultra-550b-a55b:free",
+   "provider": "Nvidia",
+   "tokens": "215+479 (raisonnement 366)",
+   "comparator_s": null,
+   "end_to_end_s": 5.9,
+   "finish_reason": "stop"
+  },
+  {
+   "key": "DEV-04|r1|s1",
+   "level": "N2",
+   "kind": "answer",
+   "verdict": "correct",
+   "error_class": null,
+   "latency_s": 8.191,
+   "model_returned": "nvidia/nemotron-3-ultra-550b-a55b:free",
+   "provider": "Nvidia",
+   "tokens": "219+894 (raisonnement 648)",
+   "comparator_s": null,
+   "end_to_end_s": 8.23,
+   "finish_reason": "stop"
+  },
+  {
+   "key": "DEV-05|r1|s1",
+   "level": "N5",
+   "kind": "answer",
+   "verdict": "correct",
+   "error_class": null,
+   "latency_s": 117.205,
+   "model_returned": "nvidia/nemotron-3-ultra-550b-a55b:free",
+   "provider": "Nvidia",
+   "tokens": "463+11806 (raisonnement 11506)",
+   "comparator_s": null,
+   "end_to_end_s": 117.27,
+   "finish_reason": "stop"
+  }
+ ]
+}

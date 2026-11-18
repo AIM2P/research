@@ -1,0 +1,20 @@
+{
+  "purpose": "problèmes de développement (split = dev), jamais évalués",
+  "source": "google-deepmind/miniF2F",
+  "file": "MiniF2F/Valid.lean",
+  "commit": "f0a20e14c1eeccd859d51bb4c2b3ee487889c303",
+  "seed": 20261118,
+  "parsed": 256,
+  "excluded": 204,
+  "excluded_rule": "FormalConjectures (answer(, nthRoot) ou nom déjà dans N3_selection.json",
+  "pool_size": 52,
+  "selected": [
+    "induction_sum_odd",
+    "numbertheory_sqmod3in01d"
+  ],
+  "reserve": [
+    "algebra_amgm_faxinrrp2msqrt2geq2mxm1div2x",
+    "induction_divisibility_3div2tooddnp1",
+    "imo_1987_p6"
+  ]
+}

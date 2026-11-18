@@ -1,0 +1,32 @@
+id = "DEV-05"
+level = "N5"
+kind = "answer"
+split = "dev"
+visibility = "public"
+title = "Coefficients de Lanczos de moments gaussiens (développement, réserve Krylov B1)"
+statement = '''
+On considère un opérateur dont la fonction d'autocorrélation a pour moments
+$\mu_{2k} = (2k-1)!!\,\alpha^{2k}$ pour $k \geq 0$ (avec $(-1)!! = 1$) et $\mu_{2k+1} = 0$, où $\alpha > 0$.
+
+Conventions de Caputa, Magán et Patramanis (arXiv:2109.03824) : $b_0 = 0$, $b_n > 0$ pour $n \geq 1$,
+$\varphi_n(0) = \delta_{n0}$, $\partial_t \varphi_n = b_n \varphi_{n-1} - b_{n+1} \varphi_{n+1}$, et
+$C(t) = \varphi_0(t) = \sum_{k \geq 0} (-1)^k \mu_{2k} \, t^{2k} / (2k)!$.
+
+Calculer les coefficients de Lanczos $b_1, b_2, b_3, b_4, b_5$.
+Donner la réponse sous la forme d'une liste ordonnée $[b_1, b_2, b_3, b_4, b_5]$ d'expressions exactes en $\alpha$.
+'''
+
+[source]
+name = "AIM²P"
+ref = "docs/04_Research_Proposal_v0.1.md, §6.2, candidat B1 (réserve Krylov ; clé publique)"
+licence = "CC-BY-4.0"
+modified = false
+
+[answer]
+value = "[alpha, sqrt(2)*alpha, sqrt(3)*alpha, 2*alpha, sqrt(5)*alpha]"
+variables = ["alpha"]
+assumptions = { alpha = "positive" }
+
+[audit]
+status = "pending"
+notes = "Problème de développement (réserve Krylov B1, dont la clé bₙ = α√n est publiée au document 04, §6.2), jamais évalué. Clé confirmée par trois contrôles SymPy : moments issus de C(t) = exp(−α²t²/2), récursion des moments (Viswanath–Müller) et déterminants de Hankel : bench/tools/check_dev_keys.py. Champ facultatif answer.assumptions (α > 0), lu par le correcteur du harnais. Relecture du fondateur à faire."

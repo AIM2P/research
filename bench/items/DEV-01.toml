@@ -1,0 +1,24 @@
+id = "DEV-01"
+level = "N3"
+kind = "proof"
+split = "dev"
+visibility = "public"
+title = "Somme des n premiers impairs (développement)"
+statement = '''
+Show that the sum of the first $n$ odd numbers is $n^2$.
+'''
+
+[source]
+name = "google-deepmind/miniF2F"
+ref = "MiniF2F/Valid.lean : induction_sum_odd"
+commit = "f0a20e14c1eeccd859d51bb4c2b3ee487889c303"
+licence = "Apache-2.0"
+modified = false
+
+[lean]
+module = "AMPBench.Items.DEV_01"
+theorem = "dev_01"
+
+[audit]
+status = "pending"
+notes = "Problème de développement (pilotes P3), jamais évalué. Tiré de MiniF2F/Valid.lean (jamais de Test.lean) par bench/tools/select_dev_minif2f.py, graine 20261118 (bench/items/DEV_selection.json). Énoncé repris tel quel ; compile sous Lean v4.35.0 avec l'en-tête ciblé. Relecture du fondateur à faire."

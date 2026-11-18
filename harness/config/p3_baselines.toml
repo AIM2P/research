@@ -1,0 +1,107 @@
+# SPDX-License-Identifier: Apache-2.0
+#
+# Configuration des baselines B0, B1 et B2 d'AIM²P (phase P3).
+# Sources : docs/04_Research_Proposal_v0.1.md (§5.2 à §5.6), docs/05_Domain_Map.md (§3 à §5, encadré « Jour 1 »).
+#
+# STATUT : GELÉE le 18 novembre 2026, avant le premier appel sur les 40 problèmes figés. Les valeurs que
+# le protocole laissait ouvertes ont été validées par le fondateur ce jour-là (mention « Validé le 18 nov. »).
+# Ce fichier tient lieu du « results/baselines/config.yaml » prévu par le document 04 (§5.6).
+
+[meta]
+prompt_version = "v1"                 # harness/prompts/answer_v1.md et proof_v1.md
+protocol = "docs/04_Research_Proposal_v0.1.md v0.1 ; docs/05_Domain_Map.md v0.1"
+
+[model]
+id = "nvidia/nemotron-3-ultra-550b-a55b:free"   # document 05, §3 et encadré « Jour 1 »
+route = "openrouter"                             # offre gratuite d'OpenRouter, servie par Nvidia
+endpoint = "https://openrouter.ai/api/v1/chat/completions"
+app_title = "AIM2P harness"                      # en-tête X-Title (aucune donnée personnelle)
+# Routage OpenRouter : aucun réglage, la variante :free n'a qu'un fournisseur (Nvidia). Le fournisseur
+# effectif est journalisé à chaque appel. Validé le 18 nov. : fournisseur imposé, sans bascule silencieuse.
+provider = { order = ["Nvidia"], allow_fallbacks = false }
+
+[sampling]
+# Validé le 18 nov. : le protocole ne fixait pas la température. B0, B1 et B2 partagent les
+# mêmes cinq échantillons (§5.3) : une température nulle rendrait ces échantillons quasi identiques et
+# viderait B1/B2 de leur sens. Proposition : 0.6 et top_p 0.95 (réglage d'échantillonnage courant
+# pour les modèles de raisonnement en mathématiques). La phrase « y compris à température nulle »
+# du §5.3 est lue comme : répéter même quand le décodage se veut déterministe.
+temperature = 0.6
+top_p = 0.95
+# Validé le 18 nov. : plafond de tokens de sortie, raisonnement compris (Nemotron compte ses tokens de
+# raisonnement dans completion_tokens). Le pilote a mesuré 11 806 tokens sur DEV-05 : plafond porté à 32 000.
+max_tokens = 32000
+# Graines : une graine distincte par (problème, répétition, échantillon), dérivée de base_seed par
+# SHA-256, envoyée au fournisseur (paramètre `seed`, sans garantie de déterminisme) et journalisée.
+# Validé le 18 nov. : le paramètre `seed` est envoyé.
+send_seed = true
+base_seed = 20261118
+# Validé le 18 nov. : aucune invite système (l'invite utilisateur suffit) ; effort de
+# raisonnement laissé à la valeur par défaut du modèle (paramètre `reasoning` non envoyé).
+system_prompt = ""
+
+[design]
+runs = 3                  # R ≥ 3 répétitions par problème et par système (§5.3, §5.5)
+k = 5                     # B1 et B2 : 5 échantillons indépendants, partagés avec B0 (§5.3)
+b0_sample = 1             # B0 = premier échantillon de chaque (problème, répétition)
+# B2 pour les preuves : premier échantillon accepté par le vérificateur Lean (ici lake comparator,
+# identique au correcteur : B2 = B1 par construction sur les preuves).
+b2_proof_rule = "first_verified"
+# B2 pour les réponses fermées : le §5.3 dit « sélection par le même vérificateur SymPy/Lean », sans
+# règle précise, et la clé n'est jamais visible par le sélecteur (§4). Validé le 18 nov. :
+# vote majoritaire entre les 5 réponses, équivalence SymPy/numérique, égalité -> premier échantillon.
+b2_answer_rule = "majority_sympy"
+
+[budget]
+daily_request_limit = 50                        # OpenRouter, offre gratuite sans achat de crédits
+counter_file = "results/raw/request_counter.json"   # compteur persistant (dossier ignoré par git)
+# Validé le 18 nov. : jour compté en UTC (remise à zéro supposée de la limite OpenRouter).
+day_boundary = "UTC"
+
+[http]
+timeout_s = 900           # le pilote du jour 1 a utilisé 900 s ; une preuve a pris 53 s
+max_retries = 3           # reprises après erreur réseau, 5xx ou 429 par minute (chaque tentative compte)
+backoff_base_s = 20
+backoff_max_s = 300
+rate_limit_wait_s = 65    # attente sur 429 sans Retry-After (limite par minute de l'offre gratuite)
+
+[lean]
+project = "~/aim2p-bench"                 # copie WSL de bench/lean (voir bench/tools/check_lean_wsl.sh)
+elan_bin = "~/.elan/bin"
+solutions_dir = "AMPBench/Solutions"      # solutions des modèles, hors dépôt
+comparator_dir = "comparator/solutions"
+sync_before_run = true
+permitted_axioms = ["propext", "Quot.sound", "Classical.choice"]
+forbidden = ["sorry", "admit", "axiom", "native_decide", "implemented_by", "extern", "unsafe", "debug.skipKernelTC"]
+# Validé le 18 nov. : délai maximal de lake comparator par solution. Mesures locales : 13 à 75 s ;
+# le document 04 cite une traîne au-delà de 10 minutes dans un autre environnement. Un dépassement compte
+# comme un échec de certification (build_error / timeout) et il est rapporté.
+comparator_timeout_s = 600
+
+[answers]
+numeric_points = 3                # ≥ 3 points aléatoires pour une expression à variables
+numeric_seed = 20261118
+# Validé le 18 nov. : domaine des points tirés pour les variables sans hypothèse déclarée.
+# Intervalle positif, qui évite les coupures de branche de sqrt et log ; un item peut déclarer
+# answer.assumptions = { alpha = "positive" } (champ facultatif, lu ici seulement).
+numeric_interval = [0.5, 2.5]
+numeric_rel_tol = 1e-10
+numeric_dps = 50
+simplify_timeout_s = 20
+mathverify_timeout_s = 5
+# Validé le 18 nov. : une réponse « needs_audit » (désaccord symbolique/numérique) compte comme
+# un échec dans les résumés automatiques, jusqu'à l'audit manuel exigé par le §5.2.
+needs_audit_counts_as = "failure"
+
+[paths]
+results_dir = "results"           # journaux JSONL et résumés (sans contenu des problèmes privés)
+raw_dir = "results/raw"           # invites, réponses brutes, solutions, journaux Lean : ignoré par git
+
+[campaign]
+# « GO » explicite du fondateur pour la campagne P3 : 18 novembre 2026 (règle du gel, bench/FREEZE.md).
+# Avec false, le harnais refuse tout appel sur un problème split = "eval", même avec --allow-eval.
+eval_authorized = true
+name = "p3_nemotron"
+# Jeu de contrôle quotidien (validé le 18 nov.) : 2 problèmes de développement rejoués chaque jour en B0,
+# pour détecter un changement silencieux du modèle servi (document 05, §4).
+control_items = ["DEV-03", "DEV-04"]

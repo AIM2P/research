@@ -1,0 +1,24 @@
+id = "DEV-03"
+level = "N1"
+kind = "answer"
+split = "dev"
+visibility = "public"
+title = "Dérivée d'un produit (développement)"
+statement = '''
+Soit $f(x) = x^2 e^{3x}$ pour $x$ réel. Calculer la dérivée $f'(x)$.
+Donner une expression exacte en $x$.
+'''
+
+[source]
+name = "AIM²P"
+ref = "rédigé pour les pilotes de P3 (problème de développement)"
+licence = "CC-BY-4.0"
+modified = false
+
+[answer]
+value = "(3*x**2 + 2*x)*exp(3*x)"
+variables = ["x"]
+
+[audit]
+status = "pending"
+notes = "Problème de développement (pilotes P3), jamais évalué. Clé confirmée par deux méthodes (dérivation SymPy exacte, dérivée numérique mpmath en trois points) : bench/tools/check_dev_keys.py. Relecture du fondateur à faire."
