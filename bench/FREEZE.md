@@ -36,9 +36,19 @@ Les 40 problèmes ont été audités et validés par le fondateur. La validation
   - les 7 preuves de référence N5 sont acceptées par `lake comparator` ;
   - les 17 clés N1, N2 et N5 sont confirmées par les scripts de vérification privés.
 
+## Note de transparence (ajoutée le 18 novembre 2026, après le gel)
+
+La sélection N5 a été pré-enregistrée publiquement dans le document 04 (§6.2), publié le 17 novembre 2026. Ce tableau donne aussi les **réponses exactes** des cinq problèmes N5 à réponse fermée (N5-01, 02, 05, 06, 07, issus des candidats B2, B3, B6, B8, B10). Seules la formulation exacte des énoncés et les fichiers Lean sont donc restés inédits pour ces problèmes.
+
+- **Conséquence pour les modèles entraînés avant le 17 novembre 2026** (dont Nemotron 3 Ultra, publié en juin 2026) : aucune contamination possible par ce document.
+- **Conséquence pour un modèle publié après cette date** : ses données d'entraînement peuvent contenir ces cinq réponses. Les résultats N5 de ces modèles seront signalés comme potentiellement contaminés, et rapportés aussi sans ces cinq problèmes.
+- **Problèmes N3 et N4** : ils viennent de benchmarks publics (miniF2F, ProofNet#, PutnamBench), probablement présents dans les données d'entraînement. C'est connu et assumé : ils mesurent la capacité de preuve formelle sur des énoncés connus, pas la nouveauté.
+
+Les problèmes figés ne sont pas modifiés.
+
 ## Règles après le gel
 
 - **Aucune modification des problèmes d'évaluation.** Un défaut découvert après le gel donne lieu à un erratum public, daté. Le problème est alors exclu dans une analyse de sensibilité, sans jamais être corrigé en silence.
 - **Pilotes uniquement sur des problèmes de développement** (`split = "dev"`), jamais sur les 40 problèmes figés.
-- **Les problèmes inédits ne sont envoyés à aucun service** dont les conditions permettent l'entraînement sur les données soumises. Pour la route gratuite d'OpenRouter, la décision est ouverte (document 05, §9).
+- **Envoi des problèmes inédits au modèle évalué (décision du fondateur, 18 novembre 2026)** : les 40 problèmes sont envoyés à Nemotron 3 Ultra via l'offre gratuite d'OpenRouter, dont les conditions n'excluent pas l'entraînement sur les données reçues. Ce risque ne concerne que de futurs modèles. Il est déclaré ici, et les problèmes seront de toute façon publiés après l'évaluation. Aucun autre service ne les reçoit.
 - **Aucune preuve des problèmes PutnamBench n'est publiée.**

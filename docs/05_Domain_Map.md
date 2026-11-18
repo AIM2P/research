@@ -193,7 +193,7 @@ Il s'appuie sur trois sources : les notes de recherche P1 du 18 novembre 2026 (o
 1. **Confirmer Nemotron 3 Ultra comme LLM de l'analyse principale** après la porte du jour 1, ou choisir Kimi K3.1 Pro ou Mistral Large 4 sur le même catalogue.
 2. **Choisir deux ou trois modèles.** Le couple minimal est Nemotron et Goedel ; un troisième modèle, décrit seulement à titre descriptif, alourdit le budget et entre en tension avec la règle anti-dérive.
 3. **Fixer le périmètre du prouveur.** Il ne concerne que les items formels (N3, N4 et les items formels de N5). Reste à définir ce que deviennent pour lui B3 et l'ablation A2, puisqu'il ne produit ni dérivation informelle ni plan critiqué par SymPy.
-4. **Items privés et OpenRouter :** l'offre gratuite ne garantit pas l'absence d'entraînement sur les données. Publier les items avant l'évaluation (leurs empreintes étant déjà déposées) ou réserver les items privés à une route sans conservation.
+4. **Items privés et OpenRouter : tranché le 18 novembre 2026.** Les 40 problèmes, inédits compris, sont envoyés via l'offre gratuite d'OpenRouter ; le risque d'entraînement de futurs modèles est déclaré dans `bench/FREEZE.md`.
 5. **Volume sous 50 requêtes par jour :** étaler la campagne P3 (environ un mois pour le protocole complet), réduire le nombre de répétitions, ou ajouter une seconde route (Groq) pour un second modèle.
 6. **Porter ou non SafeVerify vers v4.35** comme second avis.
 7. **Adopter ou non l'en-tête `module`** pour les fichiers d'items (en P2, S3).
