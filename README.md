@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="LICENSE"><img alt="License: CC BY 4.0" src="https://img.shields.io/badge/license-CC%20BY%204.0-1FB28C"></a>
-  <img alt="Status: Phase 1, domain mapping" src="https://img.shields.io/badge/status-Phase%201%20%C2%B7%20domain%20mapping-F6B73C">
+  <img alt="Status: Phase 2, benchmark specification" src="https://img.shields.io/badge/status-Phase%202%20%C2%B7%20benchmark%20specification-F6B73C">
   <img alt="Documents in French" src="https://img.shields.io/badge/docs-fran%C3%A7ais-EE5A3E">
 </p>
 
@@ -43,6 +43,7 @@ The documents are written in French. Each one is available in Markdown (readable
 | 2 | **State of the Art** | LLMs, proof assistants, symbolic solvers, AI for physics, recent systems | [Markdown](docs/02_State_of_the_Art.md) · [PDF](docs/pdf/02_State_of_the_Art.pdf) |
 | 3 | **Research Gap** | The four open problems AIM²P targets | [Markdown](docs/03_Research_Gap.md) · [PDF](docs/pdf/03_Research_Gap.pdf) |
 | 4 | **Research Proposal v0.1** | Pre-registered hypotheses, AMP-Bench-mini, protocol, Krylov case study, timeline, budget | [Markdown](docs/04_Research_Proposal_v0.1.md) · [PDF](docs/pdf/04_Research_Proposal_v0.1.pdf) |
+| 5 | **Domain Map** (phase P1) | Tool comparison and frozen choices: Lean 4.35, Mathlib, Physlib, SymPy, free models, verification chain | [Markdown](docs/05_Domain_Map.md) · [PDF](docs/pdf/05_Domain_Map.pdf) |
 
 ## Research question
 
@@ -65,7 +66,7 @@ Formal verification has made fast progress on competition mathematics, but theor
 | Phases | Focus | Status |
 |---|---|---|
 | P0 | Scientific framing: question, state of the art, gap, research proposal | ✅ Done |
-| P1 – P3 | Domain mapping, benchmark specification, baselines | 🔄 P1 in progress |
+| P1 – P3 | Domain mapping, benchmark specification, baselines | ✅ P1 done · 🔄 P2 in progress |
 | P4 – P6 | Reasoning engine, Lean 4 integration, compiler-guided self-correction | Planned |
 | P7 – P8 | Mathematical physics module and AMP-Bench | Planned |
 | P9 – P10 | Publications and open-source ecosystem | Planned |
@@ -84,6 +85,7 @@ Rigor, reproducibility, open science, strict comparison against baselines, autom
 docs/        Research documents in Markdown (the source of truth)
 docs/pdf/    PDF exports, rebuilt with tools/build_pdfs.py
 web/         Public website (Astro), built from docs/ and branding/
+bench/lean/  Pinned Lean 4 environment for AMP-Bench (Lean, Mathlib, Physlib v4.35.0)
 branding/    AIM²P logo, banner and the script that generates them
 tools/       Build scripts
 ```

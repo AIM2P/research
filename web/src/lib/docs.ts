@@ -19,6 +19,7 @@ export const DOCS: DocMeta[] = [
   { n: '02', slug: 'state-of-the-art', file: '02_State_of_the_Art', titleKey: 'res.d2.t', descKey: 'res.d2.d' },
   { n: '03', slug: 'research-gap', file: '03_Research_Gap', titleKey: 'res.d3.t', descKey: 'res.d3.d' },
   { n: '04', slug: 'research-proposal', file: '04_Research_Proposal_v0.1', titleKey: 'res.d4.t', descKey: 'res.d4.d' },
+  { n: '05', slug: 'domain-map', file: '05_Domain_Map', titleKey: 'res.d5.t', descKey: 'res.d5.d' },
 ];
 
 export interface TocItem { id: string; text: string }

@@ -11,3 +11,8 @@ desktop.ini
 .DS_Store
 .vscode/
 ~$*
+
+# Secrets (clés d'API) : jamais dans le dépôt
+.env
+.env.*
+*.key

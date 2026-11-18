@@ -1,0 +1,12 @@
+{
+ "challenge_module": "AMPBench.Demo.Challenge",
+ "solution_module": "AMPBench.Demo.SolutionLLM",
+ "theorem_names": [
+  "demo_trig"
+ ],
+ "permitted_axioms": [
+  "propext",
+  "Quot.sound",
+  "Classical.choice"
+ ]
+}
