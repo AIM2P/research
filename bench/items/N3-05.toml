@@ -1,0 +1,26 @@
+id = "N3-05"
+level = "N3"
+kind = "proof"
+split = "eval"
+visibility = "public"
+title = "Polynôme de degré 6 à racines entières positives"
+statement = '''
+All the roots of polynomial $z^6 - 10z^5 + Az^4 + Bz^3 + Cz^2 + Dz + 16$ are positive integers. What is the value of $B$?
+
+$\textbf{(A)}\ -88 \qquad\textbf{(B)}\ -80 \qquad\textbf{(C)}\ -64\qquad\textbf{(D)}\ -41 \qquad\textbf{(E)}\ -40$
+'''
+
+[source]
+name = "google-deepmind/miniF2F"
+ref = "MiniF2F/Test.lean : amc12a_2021_p12"
+commit = "f0a20e14c1eeccd859d51bb4c2b3ee487889c303"
+licence = "Apache-2.0"
+modified = false
+
+[lean]
+module = "AMPBench.Items.N3_05"
+theorem = "n3_05"
+
+[audit]
+status = "pending"
+notes = "Audit préliminaire (IA, 18 nov. 2026) : énoncé fidèle. h₁ dit que toute racine complexe de f est réelle, strictement positive et entière ; avec le théorème fondamental de l'algèbre, f est scindé et ses six racines (avec multiplicité) sont 1, 1, 2, 2, 2, 2 (somme 10, produit 16), d'où B = -88, réponse (A). Hypothèses satisfiables par les coefficients de (z - 1)²(z - 2)⁴, l'énoncé n'est donc pas vide. Les coefficients a, b, c, d sont réels, ce que l'énoncé informel sous-entend. Imports : en plus de Complex et Int.floor sur ℝ, l'en-tête importe le théorème fondamental de l'algèbre (Mathlib.Analysis.Complex.Polynomial.Basic) et les relations de Viète, sans lesquels une preuve est hors de portée avec cet en-tête figé. Accepté, à confirmer par le fondateur."

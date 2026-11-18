@@ -1,0 +1,24 @@
+id = "N4-08"
+level = "N4"
+kind = "proof"
+split = "eval"
+visibility = "public"
+title = "Quatre complexes de module 1 : une expression non nulle"
+statement = '''
+Énoncé informel non reproduit (texte du concours Putnam, MAA, diffusé par PutnamBench avec l'autorisation de la MAA). Voir le fichier lean4/src/putnam_2020_b5.lean du dépôt trishullab/PutnamBench, commit a635813f5edf. L'énoncé formel figé est dans le défi Lean.
+'''
+
+[source]
+name = "trishullab/PutnamBench"
+ref = "lean4/src/putnam_2020_b5.lean : putnam_2020_b5"
+commit = "a635813f5edf297d928f9bd5ef8324a26bdde09c"
+licence = "Apache-2.0"
+modified = false
+
+[lean]
+module = "AMPBench.Items.N4_08"
+theorem = "n4_08"
+
+[audit]
+status = "pending"
+notes = "Audit préliminaire (IA, 18 nov. 2026) : énoncé fidèle (z indexé par Fin 4, indices 0 à 3 pour z₁ … z₄ ; ‖z n‖ = 1 et z n ≠ 1). Hypothèses satisfiables, pas de vacuité. Compile tel quel sous Lean v4.35. Énoncé informel : texte du concours Putnam (MAA), diffusé par PutnamBench avec la permission de la MAA ; vérifier que cette permission couvre sa reprise dans AMP-Bench-mini. Aucune preuve formelle de ce problème ne doit être écrite ni publiée (demande des mainteneurs de PutnamBench). Accepté, à confirmer par le fondateur."

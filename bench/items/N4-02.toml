@@ -1,0 +1,24 @@
+id = "N4-02"
+level = "N4"
+kind = "proof"
+split = "eval"
+visibility = "public"
+title = "Base dénombrable d'un espace métrique compact"
+statement = '''
+Prove that every compact metric space $K$ has a countable base.
+'''
+
+[source]
+name = "PAug/ProofNetSharp"
+ref = "ProofNet# test : Rudin|exercise_2_25"
+commit = "a8da405fbd1e348a87445c2e562c747b7e26dc8f"
+licence = "MIT"
+modified = false
+
+[lean]
+module = "AMPBench.Items.N4_02"
+theorem = "n4_02"
+
+[audit]
+status = "pending"
+notes = "Audit préliminaire (IA, 18 nov. 2026) : énoncé fidèle (base d'ouverts dénombrable : Set.Countable B ∧ IsTopologicalBasis B). Le résultat est déjà dans Mathlib : un compact est σ-compact, un espace métrique σ-compact est à base dénombrable (instance EMetric.secondCountable_of_sigmaCompact), et TopologicalSpace.exists_countable_basis donne la base. L'en-tête importe ces modules, comme `import Mathlib` le faisait dans la source ; l'exercice se réduit alors à retrouver ces noms, pouvoir discriminant faible pour un prouveur qui connaît Mathlib. Compile tel quel sous Lean v4.35. Accepté, à confirmer par le fondateur."

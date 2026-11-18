@@ -1,0 +1,24 @@
+id = "N4-03"
+level = "N4"
+kind = "proof"
+split = "eval"
+visibility = "public"
+title = "Si av = 0, alors a = 0 ou v = 0"
+statement = '''
+Prove that if $a \in \mathbf{F}$, $v \in V$, and $av = 0$, then $a = 0$ or $v = 0$.
+'''
+
+[source]
+name = "PAug/ProofNetSharp"
+ref = "ProofNet# test : Axler|exercise_1_4"
+commit = "a8da405fbd1e348a87445c2e562c747b7e26dc8f"
+licence = "MIT"
+modified = false
+
+[lean]
+module = "AMPBench.Items.N4_03"
+theorem = "n4_03"
+
+[audit]
+status = "pending"
+notes = "Audit préliminaire (IA, 18 nov. 2026) : énoncé fidèle, et un peu plus général que chez Axler (F corps quelconque au lieu de ℝ ou ℂ). C'est un lemme de Mathlib (smul_eq_zero) : un essai local montre qu'une seule tactique de simplification le ferme avec cet en-tête, et l'exercice informel est lui aussi élémentaire. Pouvoir discriminant quasi nul : au fondateur de décider s'il faut le remplacer par la réserve (Axler|exercise_1_2, un calcul dans ℂ). Compile tel quel sous Lean v4.35. Accepté sous réserve, à confirmer par le fondateur."

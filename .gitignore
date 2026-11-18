@@ -16,3 +16,6 @@ desktop.ini
 .env
 .env.*
 *.key
+
+# AMP-Bench-mini : items inédits, publiés seulement après l'évaluation (empreintes dans bench/HASHES.txt)
+bench/private/

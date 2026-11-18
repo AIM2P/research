@@ -1,0 +1,4 @@
+# Fins de ligne Unix pour les fichiers exécutés sous Linux (WSL) ou par Lean
+*.sh   text eol=lf
+*.lean text eol=lf
+*.toml text eol=lf

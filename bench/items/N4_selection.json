@@ -1,0 +1,138 @@
+{
+  "sources": {
+    "proofnet_sharp": {
+      "dataset": "PAug/ProofNetSharp",
+      "split": "test",
+      "file": "data/test-00000-of-00001.parquet",
+      "revision": "a8da405fbd1e348a87445c2e562c747b7e26dc8f",
+      "sha256": "c2c2d56311f1f36396f98dd6bf76b8d03df6efd0df656a9085297372ea7d7039",
+      "licence": "MIT",
+      "rows": 186,
+      "excluded_putnam": 6,
+      "books": {
+        "proofnet_algebre": [
+          "Artin",
+          "Dummit-Foote",
+          "Herstein",
+          "Ireland-Rosen"
+        ],
+        "proofnet_analyse": [
+          "Pugh",
+          "Rudin",
+          "Shakarchi"
+        ],
+        "proofnet_algebre_lineaire": [
+          "Axler"
+        ],
+        "proofnet_topologie": [
+          "Munkres"
+        ]
+      }
+    },
+    "putnambench": {
+      "repo": "trishullab/PutnamBench",
+      "dir": "lean4/src",
+      "commit": "a635813f5edf297d928f9bd5ef8324a26bdde09c",
+      "licence": "Apache-2.0",
+      "files": 672,
+      "excluded_solution": 346,
+      "excluded_other": 0
+    }
+  },
+  "seed": 20261118,
+  "quotas": {
+    "proofnet_algebre": 1,
+    "proofnet_analyse": 1,
+    "proofnet_algebre_lineaire": 1,
+    "proofnet_topologie": 1,
+    "putnambench": 4
+  },
+  "strata": {
+    "proofnet_algebre": {
+      "pool_size": 92,
+      "selected": [
+        "Dummit-Foote|exercise_4_4_6b"
+      ],
+      "reserve": [
+        "Herstein|exercise_4_3_1",
+        "Dummit-Foote|exercise_9_4_2c",
+        "Dummit-Foote|exercise_9_4_2a"
+      ]
+    },
+    "proofnet_analyse": {
+      "pool_size": 44,
+      "selected": [
+        "Rudin|exercise_2_25"
+      ],
+      "reserve": [
+        "Shakarchi|exercise_2_2",
+        "Rudin|exercise_4_5b",
+        "Rudin|exercise_3_21"
+      ]
+    },
+    "proofnet_algebre_lineaire": {
+      "pool_size": 14,
+      "selected": [
+        "Axler|exercise_1_4"
+      ],
+      "reserve": [
+        "Axler|exercise_1_2",
+        "Axler|exercise_6_3",
+        "Axler|exercise_5_1"
+      ]
+    },
+    "proofnet_topologie": {
+      "pool_size": 30,
+      "selected": [
+        "Munkres|exercise_31_1"
+      ],
+      "reserve": [
+        "Munkres|exercise_21_6b",
+        "Munkres|exercise_13_3b",
+        "Munkres|exercise_13_4a2"
+      ]
+    },
+    "putnambench": {
+      "pool_size": 326,
+      "selected": [
+        "putnam_1988_b6",
+        "putnam_1989_a3",
+        "putnam_2014_a1",
+        "putnam_2020_b5"
+      ],
+      "reserve": [
+        "putnam_1963_b5",
+        "putnam_1987_b5",
+        "putnam_1994_a4"
+      ]
+    }
+  },
+  "ids": {
+    "N4-01": "Dummit-Foote|exercise_4_4_6b",
+    "N4-02": "Rudin|exercise_2_25",
+    "N4-03": "Axler|exercise_1_4",
+    "N4-04": "Munkres|exercise_31_1",
+    "N4-05": "putnam_1988_b6",
+    "N4-06": "putnam_1989_a3",
+    "N4-07": "putnam_2014_a1",
+    "N4-08": "putnam_2020_b5"
+  },
+  "replacements": [
+    {
+      "id": "N4-04",
+      "stratum": "proofnet_topologie",
+      "date": "2026-11-18",
+      "rejected": "Munkres|exercise_31_1",
+      "replacement": "Munkres|exercise_21_6b",
+      "reason": "Énoncé faux tel que formalisé. RegularSpace de Mathlib n'inclut pas la condition T1 (points fermés) que Munkres met dans la définition d'un espace régulier. Un espace grossier à deux points est régulier au sens de Mathlib, et ses seuls ouverts contenant un point valent l'espace entier, donc les adhérences ne sont jamais disjointes. Contre-exemple vérifié en Lean v4.35 (axiomes propext, Classical.choice, Quot.sound)."
+    },
+    {
+      "id": "N4-04",
+      "stratum": "proofnet_topologie",
+      "date": "2026-11-18",
+      "rejected": "Munkres|exercise_21_6b",
+      "replacement": "Munkres|exercise_13_3b",
+      "reason": "Énoncé faux tel que formalisé. Dans `f : ℕ → Icc 0 1 → ℝ`, les numéraux 0 et 1 s'élaborent dans ℕ (type par défaut) : le domaine est {0, 1} ⊂ ℕ et non [0, 1] ⊂ ℝ, et sur ces deux points la suite x^n converge uniformément. Contre-exemple vérifié en Lean v4.35 (axiomes propext, Classical.choice, Quot.sound)."
+    }
+  ]
+}

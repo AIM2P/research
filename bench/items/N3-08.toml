@@ -1,0 +1,24 @@
+id = "N3-08"
+level = "N3"
+kind = "proof"
+split = "eval"
+visibility = "public"
+title = "Équation a^(b²) = b^a en entiers positifs"
+statement = '''
+Find all pairs $ (a,b)$ of positive integers that satisfy the equation: $ a^{b^2} ={} b^a$.
+'''
+
+[source]
+name = "google-deepmind/miniF2F"
+ref = "MiniF2F/Test.lean : imo_1997_p5"
+commit = "f0a20e14c1eeccd859d51bb4c2b3ee487889c303"
+licence = "Apache-2.0"
+modified = false
+
+[lean]
+module = "AMPBench.Items.N3_08"
+theorem = "n3_08"
+
+[audit]
+status = "pending"
+notes = "Audit préliminaire (IA, 18 nov. 2026) : énoncé fidèle : égalité d'ensembles (les deux inclusions sont à prouver), x ^ y ^ 2 se lit x ^ (y ^ 2), positivité imposée par h₀, réponse {(1, 1), (16, 2), (27, 3)} conforme à la solution officielle. Problème difficile, aucun raccourci repéré. Accepté, à confirmer par le fondateur."

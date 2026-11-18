@@ -85,6 +85,7 @@ Rigor, reproducibility, open science, strict comparison against baselines, autom
 docs/        Research documents in Markdown (the source of truth)
 docs/pdf/    PDF exports, rebuilt with tools/build_pdfs.py
 web/         Public website (Astro), built from docs/ and branding/
+bench/       AMP-Bench-mini: problems, validator, sampling scripts (see bench/README.md)
 bench/lean/  Pinned Lean 4 environment for AMP-Bench (Lean, Mathlib, Physlib v4.35.0)
 branding/    AIM²P logo, banner and the script that generates them
 tools/       Build scripts
@@ -103,7 +104,7 @@ If you refer to this research program, please cite it using the metadata in [`CI
 
 ## License
 
-The documents in this repository are released under the [Creative Commons Attribution 4.0 International license](LICENSE) (CC BY 4.0). The AIM²P name and logo identify the initiative: please do not use them in a way that suggests endorsement.
+The documents in this repository are released under the [Creative Commons Attribution 4.0 International license](LICENSE) (CC BY 4.0). The benchmark code in `bench/` is released under the [Apache License 2.0](bench/LICENSE); benchmark problems written by AIM²P are CC BY 4.0, and problems taken from other benchmarks keep their source licence (see [bench/THIRD_PARTY.md](bench/THIRD_PARTY.md)). The AIM²P name and logo identify the initiative: please do not use them in a way that suggests endorsement.
 
 ---
 

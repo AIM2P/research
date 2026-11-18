@@ -1,0 +1,31 @@
+id = "N3-02"
+level = "N3"
+kind = "proof"
+split = "eval"
+visibility = "public"
+title = "Système linéaire à trois inconnues"
+statement = '''
+If
+
+\begin{align*}
+3x+4y-12z&=10,\\
+-2x-3y+9z&=-4,
+\end{align*}
+
+compute $x$.
+'''
+
+[source]
+name = "google-deepmind/miniF2F"
+ref = "MiniF2F/Test.lean : mathd_algebra_388"
+commit = "f0a20e14c1eeccd859d51bb4c2b3ee487889c303"
+licence = "Apache-2.0"
+modified = false
+
+[lean]
+module = "AMPBench.Items.N3_02"
+theorem = "n3_02"
+
+[audit]
+status = "pending"
+notes = "Audit préliminaire (IA, 18 nov. 2026) : énoncé fidèle (x = 14 se déduit par combinaison linéaire des deux équations : 3 × (1) + 4 × (2)). Hypothèses satisfiables (x = 14, y = -8, z = 0). Problème facile : un essai local montre qu'une seule tactique d'automatisation standard le ferme, pouvoir discriminant faible. Accepté, à confirmer par le fondateur."

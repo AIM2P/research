@@ -1,0 +1,24 @@
+id = "N3-03"
+level = "N3"
+kind = "proof"
+split = "eval"
+visibility = "public"
+title = "Résidu modulo 4 d'un produit"
+statement = '''
+Find the modulo 4 residue of $121 \cdot 122 \cdot 123$.
+'''
+
+[source]
+name = "google-deepmind/miniF2F"
+ref = "MiniF2F/Test.lean : mathd_numbertheory_517"
+commit = "f0a20e14c1eeccd859d51bb4c2b3ee487889c303"
+licence = "Apache-2.0"
+modified = false
+
+[lean]
+module = "AMPBench.Items.N3_03"
+theorem = "n3_03"
+
+[audit]
+status = "pending"
+notes = "Audit préliminaire (IA, 18 nov. 2026) : énoncé fidèle (121 × 122 × 123 = 1 815 726 ≡ 2 mod 4), calcul dans ℕ. Énoncé sans hypothèse, trivialement prouvable par calcul (un essai local montre qu'une seule tactique de calcul le ferme) ; le problème informel est lui-même un simple calcul, la formalisation ne le rend donc pas plus facile. Gardé pour respecter le tirage aléatoire, mais son pouvoir discriminant est nul ou presque : au fondateur de décider s'il faut le remplacer par la réserve (mathd_numbertheory_254). Accepté sous réserve, à confirmer par le fondateur."

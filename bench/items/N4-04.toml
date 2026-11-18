@@ -1,0 +1,24 @@
+id = "N4-04"
+level = "N4"
+kind = "proof"
+split = "eval"
+visibility = "public"
+title = "La famille T∞ n'est pas toujours une topologie"
+statement = '''
+Show that the collection $$\mathcal{T}_\infty = \{U | X - U \text{ is infinite or empty or all of X}\}$$ does not need to be a topology on the set $X$.
+'''
+
+[source]
+name = "PAug/ProofNetSharp"
+ref = "ProofNet# test : Munkres|exercise_13_3b"
+commit = "a8da405fbd1e348a87445c2e562c747b7e26dc8f"
+licence = "MIT"
+modified = false
+
+[lean]
+module = "AMPBench.Items.N4_04"
+theorem = "n4_04"
+
+[audit]
+status = "pending"
+notes = "Audit préliminaire (IA, 18 nov. 2026) : troisième tirage de la strate topologie : Munkres|exercise_31_1 et Munkres|exercise_21_6b ont été rejetés car faux tels que formalisés (contre-exemples vérifiés en Lean, voir replacements dans N4_selection.json). Énoncé fidèle sur le fond : la forme formelle affirme que T∞ n'est pas toujours stable par réunion quelconque, ce qui suffit pour qu'elle ne soit pas une topologie ; c'est le seul axiome qui puisse échouer (∅ et X sont dans T∞, et T∞ est stable par intersection finie), donc la forme formelle est un peu plus précise que l'énoncé informel mais dit la même chose. Vrai (X = ℕ, s = les singletons {n} avec n ≥ 1). X est pris dans Type, t = ⊤ désigne Set.univ. Compile tel quel sous Lean v4.35. Accepté, à confirmer par le fondateur."

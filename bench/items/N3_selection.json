@@ -1,0 +1,75 @@
+{
+  "source": "google-deepmind/miniF2F",
+  "file": "MiniF2F/Test.lean",
+  "commit": "f0a20e14c1eeccd859d51bb4c2b3ee487889c303",
+  "seed": 20261118,
+  "quotas": {
+    "mathd_algebra": 2,
+    "mathd_numbertheory": 2,
+    "amc12": 2,
+    "aime": 1,
+    "imo": 1
+  },
+  "parsed": 242,
+  "excluded_formalconjectures": 0,
+  "strata": {
+    "mathd_algebra": {
+      "pool_size": 70,
+      "selected": [
+        "mathd_algebra_141",
+        "mathd_algebra_388"
+      ],
+      "reserve": [
+        "mathd_algebra_478",
+        "mathd_algebra_302",
+        "mathd_algebra_17"
+      ]
+    },
+    "mathd_numbertheory": {
+      "pool_size": 60,
+      "selected": [
+        "mathd_numbertheory_517",
+        "mathd_numbertheory_277"
+      ],
+      "reserve": [
+        "mathd_numbertheory_254",
+        "mathd_numbertheory_247",
+        "mathd_numbertheory_495"
+      ]
+    },
+    "amc12": {
+      "pool_size": 44,
+      "selected": [
+        "amc12a_2021_p12",
+        "amc12a_2020_p9"
+      ],
+      "reserve": [
+        "amc12_2000_p20",
+        "amc12a_2020_p15",
+        "amc12a_2013_p4"
+      ]
+    },
+    "aime": {
+      "pool_size": 14,
+      "selected": [
+        "aime_1983_p1"
+      ],
+      "reserve": [
+        "aime_1991_p9",
+        "aime_1988_p8",
+        "aime_1997_p9"
+      ]
+    },
+    "imo": {
+      "pool_size": 20,
+      "selected": [
+        "imo_1997_p5"
+      ],
+      "reserve": [
+        "imo_1974_p3",
+        "imo_1977_p6",
+        "imo_1969_p2"
+      ]
+    }
+  }
+}

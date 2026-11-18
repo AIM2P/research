@@ -1,0 +1,24 @@
+id = "N3-04"
+level = "N3"
+kind = "proof"
+split = "eval"
+visibility = "public"
+title = "PGCD 6, PPCM 126 : somme minimale"
+statement = '''
+The greatest common divisor of positive integers $m$ and $n$ is 6. The least common multiple of $m$ and $n$ is 126. What is the least possible value of $m+n$?
+'''
+
+[source]
+name = "google-deepmind/miniF2F"
+ref = "MiniF2F/Test.lean : mathd_numbertheory_277"
+commit = "f0a20e14c1eeccd859d51bb4c2b3ee487889c303"
+licence = "Apache-2.0"
+modified = false
+
+[lean]
+module = "AMPBench.Items.N3_04"
+theorem = "n3_04"
+
+[audit]
+status = "pending"
+notes = "Audit préliminaire (IA, 18 nov. 2026) : énoncé fidèle. La positivité de m et n n'est pas écrite, mais elle découle de Nat.lcm m n = 126 ≠ 0 (Nat.lcm m 0 = 0), donc rien n'est perdu. IsLeast exige à la fois l'appartenance (m = 18, n = 42) et la minoration, réponse 60 correcte. Accepté, à confirmer par le fondateur."
